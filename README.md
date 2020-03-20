@@ -15,8 +15,8 @@ Iniciativa social para crear un servicio gratuito de conferencias telefónicas. 
 * [x] README.md
 * [x] Etiquetas estándar en la sección de *issues*.
 * [x] Proyecto en Rails 6 base.
-* [ ] LICENCIA
-* [ ] CONTRIBUTION.md
+* [x] LICENCIA
+* [x] CONTRIBUTION.md
 
 ## ¿Cómo ayudar?
 Para contribuir revisa la [Guia de Contribución](https://github.com/todosconectados/api/blob/master/CONTRIBUTING.md) donde encontrarás la información fundamental para comenzar a contribuir en los proyectos.
