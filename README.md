@@ -19,4 +19,4 @@ Iniciativa social para crear un servicio gratuito de conferencias telefónicas. 
 * [ ] CONTRIBUTION.md
 
 ## ¿Cómo ayudar?
-Para contribuir revisa la [Guia de Contribución](https://github.com/todosconectados/api/terremoto-cdmx/blob/master/CONTRIBUTING.md) donde encontrarás la información fundamental para comenzar a contribuir en los proyectos.
+Para contribuir revisa la [Guia de Contribución](https://github.com/todosconectados/api/blob/master/CONTRIBUTING.md) donde encontrarás la información fundamental para comenzar a contribuir en los proyectos.
