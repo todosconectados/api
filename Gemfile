@@ -11,8 +11,6 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
-# Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # use `active_model_serializers` for JSON serialization
 gem 'active_model_serializers', '~> 0.10.6'
