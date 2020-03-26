@@ -26,7 +26,10 @@ gem 'dotenv-rails', '~> 2.7.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+# use `rack-cors` for HTTP cors support
+gem 'rack-cors', '~> 1.0.1'
+# use grecaptcha for bot request prevention
+gem 'recaptcha', '~> 4.3.1', require: 'recaptcha/rails'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -42,7 +45,7 @@ group :development, :test do
   gem 'capistrano-sidekiq', '~> 1.0.0'
   # use rspec for unit and integration tests
   gem 'factory_bot_rails', '~> 5.0.2'
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 4.0.0.beta2'
   # ruby code style fixing
   gem 'rubocop-rails', '~> 2.3.2', require: false
   # Adds support for Capybara system testing and selenium driver
@@ -70,6 +73,8 @@ group :test do
   gem 'vcr', '~> 3.0.3'
   # use shoulda-matchers to enforce unit test within models
   gem 'shoulda-matchers', '~> 3.1'
+  # enable mocks within context examples
+  gem 'webmock', '~> 3.1.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

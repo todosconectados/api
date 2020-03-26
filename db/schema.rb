@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_26_045928) do
     t.string "phone", null: false
     t.integer "status", default: 0
     t.string "activation_code"
-    t.integer "target", default: 0, null: false
+    t.integer "target", null: false
     t.string "business_name", null: false
     t.integer "industry", default: 0
     t.integer "state", null: false

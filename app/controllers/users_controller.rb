@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
+# User API endpoint
 class UsersController < ApplicationController
+  before_action :validate_recaptcha!, only: %i[create]
   # Generates a new +User+ for the given params.
   # @param [String] user[name] - User Name
   # @param [String] user[last_names] - User Last name
@@ -30,13 +34,13 @@ class UsersController < ApplicationController
   # }
   def create
     user = User.create! create_params
-    json_response user, :created, serializer: User
+    json_response user, :created
   end
 
   private
 
   def create_params
-    params.require(:user).permit(
+    params.require(:users).permit(
       :name,
       :last_names,
       :email,

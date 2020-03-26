@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# It contains all the information of the user
 class User < ApplicationRecord
   include Statable
 

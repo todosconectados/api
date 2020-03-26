@@ -17,9 +17,8 @@ Rails.application.configure do
   # Configure public file server for tests with Cache-Control for performance.
   config.public_file_server.enabled = true
   config.public_file_server.headers = {
-    'Cache-Control' => "public, max-age=#{1.hour.to_i}"
+    'Cache-Control' => "public, max-age=#{1.hour.seconds.to_i}"
   }
-
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
@@ -27,25 +26,22 @@ Rails.application.configure do
   # Raise exceptions instead of rendering exception templates.
   config.action_dispatch.show_exceptions = false
 
-  # Disable request forgery protection in test environment.
-  config.action_controller.allow_forgery_protection = false
-
-  # Store uploaded files on the local file system in a temporary directory
-  config.active_storage.service = :test
-
-  config.action_mailer.perform_caching = false
-
   # Tell Action Mailer not to deliver emails to the real world.
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
-  config.action_mailer.delivery_method = :test
-
-  # Url Host
-  Rails.application.routes.default_url_options[:only_path] = true
+  config.action_mailer.perform_caching = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :ses
 
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
+  # Url Host
+  Rails.application.routes.default_url_options[:only_path] = true
+  # ActiveJob Queue Adapter (we will need it)
+  config.active_job.queue_adapter = :inline
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  config.secret_key = 'c82723d8f45f6506ff73dfd3920ae8de843d179aecc50b42d9c4b6ac3763ca5c673ff3790c098a870e4074e74a9dc82fb20e18da2f645711215db1112ba9db39'
 end
