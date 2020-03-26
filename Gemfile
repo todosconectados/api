@@ -48,6 +48,10 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'database_cleaner'
+  # use faker to generate model factories
+  gem 'faker', '~> 1.9.3'
+  # debugging
+  gem 'pry-rails', '~> 0.3.6'
 end
 
 group :development do
@@ -64,6 +68,8 @@ group :test do
   gem 'selenium-webdriver'
   # use VCR for remote API interactions
   gem 'vcr', '~> 3.0.3'
+  # use shoulda-matchers to enforce unit test within models
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
