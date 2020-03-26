@@ -20,3 +20,30 @@ Iniciativa social para crear un servicio gratuito de conferencias telefónicas. 
 
 ## ¿Cómo ayudar?
 Para contribuir revisa la [Guia de Contribución](https://github.com/todosconectados/api/blob/master/CONTRIBUTING.md) donde encontrarás la información fundamental para comenzar a contribuir en los proyectos.
+
+## Configuración inicial
+
+- Cree un nuevo archivo llamado `.env` en el directorio raíz de la aplicación basado en ` .env.sample`. Rellene las variables adecuadas antes de ejecutar el demonio del servidor ruby.
+
+```
+TODOS_CONECTADOS_USERNAME=
+TODOS_CONECTADOS_DATABASE_PASSWORD=
+...
+```
+
+- Instalar dependencias de Rails, a través de `bundle command`.
+
+```bash
+bundle install
+```
+
+- Configurar entorno de `desarrollo` y` prueba` db.
+
+```bash
+bundle exec rails db:setup
+```
+
+## Ejecutar / Desarrollo
+
+* `rails s`
+* Visita tu aplicación en [http://localhost:3000](http://localhost:3000).
