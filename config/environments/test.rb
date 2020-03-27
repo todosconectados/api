@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.configure do
-  # Settings specified here will take precedence over those in config/application.rb.
+  # Settings specified here will take precedence over those in
+  # config/application.rb.
 
   # The test environment is used exclusively to run your application's
   # test suite. You never need to work with it otherwise. Remember that
@@ -43,5 +44,5 @@ Rails.application.configure do
   config.active_job.queue_adapter = :inline
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.secret_key = 'c82723d8f45f6506ff73dfd3920ae8de843d179aecc50b42d9c4b6ac3763ca5c673ff3790c098a870e4074e74a9dc82fb20e18da2f645711215db1112ba9db39'
+  config.secret_key = '712f7c717455371dce08a9d9acdef09036ab00d3c324d97c59bf4ea5d85cf34d4118c23a89db19ca923f8e14371dc63a556d0bc219d0865f3eec9159ef322a17'
 end

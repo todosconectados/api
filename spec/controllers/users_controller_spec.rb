@@ -1,4 +1,4 @@
-require 'rails_helper'
+require 'spec_helper'
 
 describe UsersController, type: :controller do
   describe 'POST /users' do
@@ -82,6 +82,29 @@ describe UsersController, type: :controller do
       end
       # status code expectations
       expect(response).to have_http_status(422)
+    end
+  end
+
+  describe 'POST /users/:id/validate' do
+    let!(:user) do
+      create :user,
+      phone: '5522522113'
+    end
+
+    let!(:url) do
+      validate_user_url(user.id)
+    end
+
+    let!(:params) do
+      {
+        phone: '4421304777'
+      }
+    end
+
+    it 'should update validation code and update phone' do
+      binding.pry
+      post :validate , id: user.id, params: params
+      binding.pry
     end
   end
 end

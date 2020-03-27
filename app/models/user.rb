@@ -40,4 +40,14 @@ class User < ApplicationRecord
   enum status: Status::LIST
   enum target: Target::LIST
   enum industry: Industry::LIST
+
+  # creates a 4 length random code based on the given generation properties
+  # should be called in a +put cotroller action+
+  # @return [bool] - status of the operation
+  def generate_support_code!
+    self[:support_code] = RandomPasswordGenerator.generate(
+      4, skip_upper_case: true, skip_symbols: true, skip_url_unsafe: true
+    )
+    save!
+  end
 end

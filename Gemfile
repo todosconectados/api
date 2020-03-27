@@ -45,7 +45,7 @@ group :development, :test do
   gem 'capistrano-sidekiq', '~> 1.0.0'
   # use rspec for unit and integration tests
   gem 'factory_bot_rails', '~> 5.0.2'
-  gem 'rspec-rails', '~> 4.0.0.beta2'
+  gem 'rspec-rails', '~> 3.7.1'
   # ruby code style fixing
   gem 'rubocop-rails', '~> 2.3.2', require: false
   # Adds support for Capybara system testing and selenium driver

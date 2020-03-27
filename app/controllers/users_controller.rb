@@ -3,6 +3,8 @@
 # User API endpoint
 class UsersController < ApplicationController
   before_action :validate_recaptcha!, only: %i[create]
+  before_action :assert_user!, only: %i[validate]
+  before_action :assert_user_with_activation_code!, only: %i[activate]
   # Generates a new +User+ for the given params.
   # @param [String] user[name] - User Name
   # @param [String] user[last_names] - User Last name
@@ -37,6 +39,17 @@ class UsersController < ApplicationController
     json_response user, :created
   end
 
+  def activate
+    @user.update! status: User::Status::ACTIVE
+    head :ok
+  end
+
+  def validate
+    @user.update params['phone']
+    @user.generate_support_code!
+    head :ok
+  end
+
   private
 
   def create_params
@@ -48,6 +61,17 @@ class UsersController < ApplicationController
       :activation_code,
       :business_name,
       :state
+    )
+  end
+
+  def assert_user!
+    @user = User.step1.find params['id']
+  end
+
+  def assert_user_with_activation_code!
+    @user = User.step1.find_by(
+      id: params['id'],
+      activation_code: params['activation_code']
     )
   end
 end
