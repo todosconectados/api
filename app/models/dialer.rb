@@ -9,7 +9,7 @@ class Dialer < ApplicationRecord
     RESERVED = :reserved
     INACTIVE = :inactive
     ACTIVE = :active
-    LIST = [RESERVED, INACTIVE, ACTIVE].freeze
+    LIST = { RESERVED => 0, ACTIVE => 1, INACTIVE => 2 }.freeze
   end
 
   enum status: Status::LIST

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
     post :activate, on: :member, to: 'users#activate'
     post :validate, on: :member, to: 'users#validate'
   end
+
+  resources :leads, only: %i[create]
 end
