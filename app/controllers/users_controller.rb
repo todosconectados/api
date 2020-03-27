@@ -39,13 +39,22 @@ class UsersController < ApplicationController
     json_response user, :created
   end
 
+  # Generates a new +User+ for the given params.
+  # @param [String] user[phone] - Phone
+  # @param [String] user[activation_code] - Activation code
+  # @return [JSON] JSON response with http status 200
+  # or validation errors if any
   def activate
     @user.update! status: User::Status::ACTIVE
     head :ok
   end
 
+  # Generates a new +User+ for the given params.
+  # @param [String] user[phone] - Phone
+  # @return [JSON] JSON response with http status 200
+  # or validation errors if any
   def validate
-    @user.update params['phone']
+    @user.update! phone: params['phone']
     @user.generate_support_code!
     head :ok
   end
@@ -58,7 +67,7 @@ class UsersController < ApplicationController
       :last_names,
       :email,
       :phone,
-      :activation_code,
+      :target,
       :business_name,
       :state
     )
@@ -69,7 +78,7 @@ class UsersController < ApplicationController
   end
 
   def assert_user_with_activation_code!
-    @user = User.step1.find_by(
+    @user = User.step1.find_by!(
       id: params['id'],
       activation_code: params['activation_code']
     )

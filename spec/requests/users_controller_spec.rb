@@ -9,7 +9,7 @@ describe UsersController do
             last_names: 'Fuentes Venegas',
             email: 'fuentesamaury@hotmail.com',
             phone: '4421304777',
-            activation_code: '1234',
+            target: 'business',
             business_name: 'Industries FactoryBot',
             state: 'qro'
           },
@@ -24,7 +24,7 @@ describe UsersController do
           last_names: 'Fuentes Venegas',
           email: 'fuentesamaury@hotmail.com',
           phone: '4421304777',
-          activation_code: '1234',
+          target: 'business',
           business_name: 'Industries FactoryBot',
           state: 'qro'
         },
@@ -39,7 +39,7 @@ describe UsersController do
           last_names: 'Fuentes Venegas',
           email: 'fuentesamaury@hotmail.com',
           phone: '4421304777',
-          activation_code: '1234',
+          target: 'business',
           business_name: 'Industries FactoryBot',
           state: 'qro'
         },
@@ -91,14 +91,56 @@ describe UsersController do
       validate_user_url(user.id)
     end
 
-    let!(:params) do
-      {
-        phone: '4421304777'
-      }
+    it 'should update validation code and update phone' do
+      post url, params: { phone: '4421304777' }
+      expect(response).to have_http_status(:ok)
+      user.reload
+      expect(user.activation_code).to be_present
     end
 
-    it 'should update validation code and update phone' do
-      post url, params: params
+    it 'should return Record not found if phone not found' do
+      expect do
+        post url, params: { phone: nil }
+      end.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+    it 'should return Record not found if status is different from step 1' do
+      user.update! status: User::Status::TERMINATED
+      expect do
+        post url, params: { phone: nil }
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+  end
+
+  describe 'POST /users/:id/activate' do
+    let!(:user) do
+      create :user,
+      phone: '5522522113',
+      activation_code: '1234'
+    end
+
+    let!(:url) do
+      activate_user_url(user.id)
+    end
+
+    it 'should update user status to active if activation_code correct' do
+      post url, params: { activation_code: '1234' }
+      expect(response).to have_http_status(:ok)
+      user.reload
+      expect(user.status.to_sym).to eq(User::Status::ACTIVE)
+    end
+
+    it 'should return Record not found if phone not found' do
+      expect do
+        post url, params: { activation_code: 'abcd' }
+      end.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'should return Record not found if status is different from step 1' do
+      user.update! status: User::Status::TERMINATED
+      expect do
+        post url, params: { phone: nil }
+      end.to raise_error(ActiveRecord::RecordNotFound)
     end
   end
 end

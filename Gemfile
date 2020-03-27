@@ -26,6 +26,8 @@ gem 'dotenv-rails', '~> 2.7.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use `random_password_generator` for Password management
+gem 'random_password_generator', '~> 1.0.0'
 # use `rack-cors` for HTTP cors support
 gem 'rack-cors', '~> 1.0.1'
 # use grecaptcha for bot request prevention
