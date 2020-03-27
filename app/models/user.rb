@@ -14,11 +14,7 @@ class User < ApplicationRecord
     STEP1 = :step1
     ACTIVE = :active
     TERMINATED = :terminated
-    LIST = [
-      STEP1,
-      ACTIVE,
-      TERMINATED
-    ].freeze
+    LIST = { STEP1 => 0, ACTIVE => 1, TERMINATED => 2 }.freeze
   end
 
   enum status: Status::LIST
