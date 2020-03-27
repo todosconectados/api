@@ -314,7 +314,7 @@ DEPENDENCIES
   pry-rails (~> 0.3.6)
   puma (~> 4.1)
   rack-cors (~> 1.0.1)
-  rails (~> 6.0.2, >= 6.0.2.1)
+  rails (~> 6.0.2, >= 6.0.2.2)
   recaptcha (~> 4.3.1)
   rspec-rails (~> 3.7.1)
   rubocop-rails (~> 2.3.2)

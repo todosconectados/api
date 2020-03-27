@@ -1,10 +1,6 @@
-require 'spec_helper'
-
-describe UsersController, type: :controller do
+describe UsersController do
   describe 'POST /users' do
-    let!(:url) do
-      users_url
-    end
+    let!(:url) { users_url }
 
     let!(:params) do
         {
@@ -53,7 +49,7 @@ describe UsersController, type: :controller do
 
     it 'should create a valid user with a valid recaptcha' do
       VCR.use_cassette('grecaptcha_valid', match_requests_on: [:grecaptcha]) do
-        post :create, params: params
+        post url, params: params
       end
       expect(response).to have_http_status(:created)
       user_data = json['user']
@@ -71,14 +67,14 @@ describe UsersController, type: :controller do
     it 'should refuse to create a user with invalid params' do
       VCR.use_cassette('grecaptcha_valid', match_requests_on: [:grecaptcha]) do
         expect do
-          post :create, params: invalid_params
+          post url, params: invalid_params
         end.to raise_error(ActionController::ParameterMissing)
       end
     end
 
     it 'should return a unprocesable entity response whit an invalid g-recaptcha' do
       VCR.use_cassette('grecaptcha_invalid', match_requests_on: [:grecaptcha]) do
-        post :create, params: invalid_recaptcha
+        post url, params: invalid_recaptcha
       end
       # status code expectations
       expect(response).to have_http_status(422)
@@ -102,9 +98,7 @@ describe UsersController, type: :controller do
     end
 
     it 'should update validation code and update phone' do
-      binding.pry
-      post :validate , id: user.id, params: params
-      binding.pry
+      post url, params: params
     end
   end
 end
