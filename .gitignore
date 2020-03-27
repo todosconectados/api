@@ -12,10 +12,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-.env
-.DS_Store
-/doc/*
-/.yardoc/*
 
 # Ignore uploaded files in development.
 /storage/*
@@ -23,10 +19,6 @@
 /node_modules
 /yarn-error.log
 .byebug_history
-# pem & certificates
-cert
-coverage
-dump.rdb
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
