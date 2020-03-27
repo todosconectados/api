@@ -17,6 +17,9 @@
 /doc/*
 /.yardoc/*
 
+# Ignore uploaded files in development.
+/storage/*
+!/storage/.keep
 /node_modules
 /yarn-error.log
 .byebug_history
@@ -25,5 +28,7 @@ cert
 coverage
 dump.rdb
 
+# Ignore master key for decrypting credentials and more.
+/config/master.key
 config/deploy/.env.stage
 logfile
