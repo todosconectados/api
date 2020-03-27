@@ -31,6 +31,29 @@ VCR.configure do |config|
       url_regex.match(recorded_request.uri)
     )
   end
+  # Marcatel API
+  config.register_request_matcher :marcatel_api do |real_request, recorded_request|
+    url_regex = /^https:\/\/b2c.marcatel.com.mx.*$/
+    (real_request.uri == recorded_request.uri) ||
+      (
+        url_regex.match(real_request.uri) &&
+        url_regex.match(recorded_request.uri)
+      )
+  end
+  # aws ses API
+  config.register_request_matcher :ses_api do |real_request, recorded_request|
+    url_regex = /^https:\/\/email\.us-west-2\.amazonaws\.com.*$/
+    s3_url_regex = /^https:\/\/.*\.s3-us-west-2\.amazonaws\.com.*$/
+    (real_request.uri == recorded_request.uri) ||
+      (
+        url_regex.match(real_request.uri) &&
+        url_regex.match(recorded_request.uri)
+      ) ||
+      (
+        s3_url_regex.match(real_request.uri) &&
+        s3_url_regex.match(recorded_request.uri)
+      )
+  end
 end
 
 RSpec.configure do |config|

@@ -84,15 +84,19 @@ describe UsersController do
   describe 'POST /users/:id/validate' do
     let!(:user) do
       create :user,
-      phone: '5522522113'
+      phone: '5522522113',
+      email: 'fuentesamaury@hotmail.com'
     end
 
     let!(:url) do
       validate_user_url(user.id)
     end
 
-    it 'should update validation code and update phone' do
-      post url, params: { phone: '4421304777' }
+    it 'should update validation code update phone and send sms with code' do
+      VCR.use_cassette('user_send_sms_with_code',
+        match_requests_on: [:marcatel_api]) do
+        post url, params: { phone: '4421304777' }
+      end
       expect(response).to have_http_status(:ok)
       user.reload
       expect(user.activation_code).to be_present
@@ -119,12 +123,22 @@ describe UsersController do
       activation_code: '1234'
     end
 
+    let!(:dialer) do
+      create :dialer
+    end
+
     let!(:url) do
       activate_user_url(user.id)
     end
 
     it 'should update user status to active if activation_code correct' do
-      post url, params: { activation_code: '1234' }
+      VCR.use_cassette('user_sended_email',
+        match_requests_on: [:ses_api]) do
+        VCR.use_cassette('user_send_sms_with_code',
+          match_requests_on: [:marcatel_api]) do
+          post url, params: { activation_code: '1234' }
+        end
+      end
       expect(response).to have_http_status(:ok)
       user.reload
       expect(user.status.to_sym).to eq(User::Status::ACTIVE)

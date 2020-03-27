@@ -45,7 +45,8 @@ class UsersController < ApplicationController
   # @return [JSON] JSON response with http status 200
   # or validation errors if any
   def activate
-    @user.update! status: User::Status::ACTIVE
+    @user.complete_and_asign_dialer!
+    @user.send_conference_code!
     head :ok
   end
 
@@ -55,12 +56,16 @@ class UsersController < ApplicationController
   # or validation errors if any
   def validate
     @user.update! phone: params['phone']
-    @user.generate_support_code!
+    @user.generate_activation_code!
+    @user.send_activation_code!
     head :ok
   end
 
   private
 
+  # returns a List of permitted HTTP Params for +User+ step1 resource.
+  # @return ActionController::Parameters
+  # @private
   def create_params
     params.require(:users).permit(
       :name,
@@ -73,10 +78,17 @@ class UsersController < ApplicationController
     )
   end
 
+  # returns the current user finded by the given id HTTP parameter
+  # @raise ActiveRecord::RecordNotFound
+  # @return User
   def assert_user!
-    @user = User.step1.find params['id']
+    @user = User.step1.find params[:id]
   end
 
+  # returns the current user finded by the given id HTTP parameter
+  #  and should match with the activation_code param
+  # @raise ActiveRecord::RecordNotFound
+  # @return User
   def assert_user_with_activation_code!
     @user = User.step1.find_by!(
       id: params['id'],

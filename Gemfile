@@ -26,6 +26,10 @@ gem 'dotenv-rails', '~> 2.7.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# use `aws-ses` for Transactional Email Deliveries
+gem 'aws-ses', '~> 0.6.0', require: 'aws/ses'
+# WDSL client
+gem 'savon', '~> 2.12.0'
 # Use `random_password_generator` for Password management
 gem 'random_password_generator', '~> 1.0.0'
 # use `rack-cors` for HTTP cors support
@@ -76,7 +80,7 @@ group :test do
   # use shoulda-matchers to enforce unit test within models
   gem 'shoulda-matchers', '~> 3.1'
   # enable mocks within context examples
-  gem 'webmock', '~> 3.1.0'
+  gem 'webmock', '~> 3.5.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

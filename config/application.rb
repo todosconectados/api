@@ -22,8 +22,8 @@ Bundler.require(*Rails.groups)
 module TodosConectados
   # Rails Application Class
   class Application < Rails::Application
-    config.autoload_paths << Rails.root.join('lib', 'writer')
-    config.eager_load_paths << Rails.root.join('lib', 'writer')
+    config.autoload_paths << Rails.root.join('lib', 'marcatel')
+    config.eager_load_paths << Rails.root.join('lib', 'marcatel')
     # Settings in config/environments/* take precedence
     # over those specified here.
     # Application configuration can go into files in config/initializers
@@ -39,5 +39,7 @@ module TodosConectados
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    # i18n config
+    config.i18n.default_locale = :es
   end
 end
