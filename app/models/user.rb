@@ -2,12 +2,11 @@
 
 # It contains all the information of the user
 class User < ApplicationRecord
-  include Statable
   include Snsable
 
   has_one :dialer, dependent: :destroy
 
-  validates :name, :phone, :target, :business_name, :state, presence: true
+  validates :name, :phone, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :phone, length: { is: 10 }
 
@@ -22,27 +21,7 @@ class User < ApplicationRecord
     ].freeze
   end
 
-  module Target
-    BUSINESS = :business
-    ORGANIZATION = :organization
-    PERSONAL = :personal
-    LIST = [
-      BUSINESS,
-      ORGANIZATION,
-      PERSONAL
-    ].freeze
-  end
-
-  module Industry
-    TBD = :tbd
-    LIST = [
-      TBD
-    ].freeze
-  end
-
   enum status: Status::LIST
-  enum target: Target::LIST
-  enum industry: Industry::LIST
 
   # creates a 4 length random code based on the given generation properties
   # should be called in a +put cotroller action+

@@ -5,9 +5,6 @@ describe User, type: :model do
 
     it { should validate_presence_of :name }
     it { should validate_presence_of :phone }
-    it { should validate_presence_of :target }
-    it { should validate_presence_of :business_name }
-    it { should validate_presence_of :state }
     it { should validate_length_of(:phone).is_equal_to 10 }
 
     it 'should return error on invalid email' do

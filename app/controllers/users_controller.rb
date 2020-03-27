@@ -10,8 +10,6 @@ class UsersController < ApplicationController
   # @param [String] user[last_names] - User Last name
   # @param [String] user[email] - Email
   # @param [String] user[phone] - Phone
-  # @param [String] user[business_name] - Business name
-  # @param [String] user[state] - State
   # @param [String] user[activation_code] - Activation code
   # @return [JSON] JSON response with the created object and status code
   #   or validation errors if any
@@ -27,11 +25,7 @@ class UsersController < ApplicationController
   #     "email"=>"brielle@example.com",
   #     "phone"=>"9952259424",
   #     "status"=>nil,
-  #     "business_name"=>nil,
   #     "activation_code"=>1234,
-  #     "target"=>"business",
-  #     "industry"=>"tbd",
-  #     "state"=>"qro"
   #   }
   # }
   def create
@@ -71,10 +65,7 @@ class UsersController < ApplicationController
       :name,
       :last_names,
       :email,
-      :phone,
-      :target,
-      :business_name,
-      :state
+      :phone
     )
   end
 

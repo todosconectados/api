@@ -8,9 +8,5 @@ class UserSerializer < ActiveModel::Serializer
              :email,
              :phone,
              :status,
-             :activation_code,
-             :target,
-             :business_name,
-             :industry,
-             :state
+             :activation_code
 end
