@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   # @return [JSON] JSON response with http status 200
   # or validation errors if any
   def validate
-    @user.update! phone: params['phone']
+    @user.update! phone: params[:phone]
     @user.generate_activation_code!
     @user.send_activation_code!
     head :ok
@@ -82,8 +82,8 @@ class UsersController < ApplicationController
   # @return User
   def assert_user_with_activation_code!
     @user = User.step1.find_by!(
-      id: params['id'],
-      activation_code: params['activation_code']
+      id: params[:id],
+      activation_code: params[:activation_code]
     )
   end
 end

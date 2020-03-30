@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 # +LeadSerializer+
-class LeadSerializer < ActiveModel::Serializer
-  attributes :id,
-             :name,
+class LeadSerializer < ApplicationSerializer
+  attributes :name,
              :company_name,
              :email,
              :phone,

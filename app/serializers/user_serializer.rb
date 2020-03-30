@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
 # +UserSerializer+
-class UserSerializer < ActiveModel::Serializer
-  attributes :id,
-             :name,
+class UserSerializer < ApplicationSerializer
+  attributes :name,
              :last_names,
              :email,
              :phone,

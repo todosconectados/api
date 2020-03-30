@@ -55,9 +55,8 @@ describe UsersController do
 
     it 'should refuse to create a user with invalid params' do
       VCR.use_cassette('grecaptcha_valid', match_requests_on: [:grecaptcha]) do
-        expect do
-          post url, params: invalid_params
-        end.to raise_error(ActionController::ParameterMissing)
+        post url, params: invalid_params
+        expect(response).to have_http_status(:bad_request)
       end
     end
 
@@ -91,17 +90,15 @@ describe UsersController do
       expect(user.activation_code).to be_present
     end
 
-    it 'should return Record not found if phone not found' do
-      expect do
-        post url, params: { phone: nil }
-      end.to raise_error(ActiveRecord::RecordInvalid)
+    it 'should return Record unprocessable_entity if phone not found' do
+      post url, params: { phone: nil }
+      expect(response).to have_http_status(:unprocessable_entity)
     end
 
     it 'should return Record not found if status is different from step 1' do
       user.update! status: User::Status::TERMINATED
-      expect do
-        post url, params: { phone: nil }
-      end.to raise_error(ActiveRecord::RecordNotFound)
+      post url, params: { phone: nil }
+      expect(response).to have_http_status(:not_found)
     end
   end
 
@@ -134,16 +131,14 @@ describe UsersController do
     end
 
     it 'should return Record not found if phone not found' do
-      expect do
-        post url, params: { activation_code: 'abcd' }
-      end.to raise_error(ActiveRecord::RecordNotFound)
+      post url, params: { activation_code: 'abcd' }
+      expect(response).to have_http_status(:not_found)
     end
 
     it 'should return Record not found if status is different from step 1' do
       user.update! status: User::Status::TERMINATED
-      expect do
-        post url, params: { phone: nil }
-      end.to raise_error(ActiveRecord::RecordNotFound)
+      post url, params: { phone: nil }
+      expect(response).to have_http_status(:not_found)
     end
   end
 end

@@ -26,6 +26,14 @@ describe LeadsController do
       }
     end
 
+    before do
+
+    end
+
+    after do
+
+    end
+
     it 'should create a lead user' do
       post url, params: params
       expect(response).to have_http_status(:created)
@@ -39,9 +47,8 @@ describe LeadsController do
     end
 
     it 'should refuse to create a user with invalid params' do
-      expect do
-        post url, params: invalid_params
-      end.to raise_error(ActionController::ParameterMissing)
+      post url, params: invalid_params
+      expect(response).to have_http_status(:bad_request)
     end
   end
 end
