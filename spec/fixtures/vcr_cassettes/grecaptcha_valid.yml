@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.google.com/recaptcha/api/siteverify?remoteip=127.0.0.1&response=03AOLTBLT-RqJFh8sI7K6xUWHZaXYXq2UwaWPTyjlyl4MWNFwjq3l96uBzjfcObpeDYVPlzbLMPzDLSCE3snzhcU_tRLNCkLmGtR7yzjR4tKsTzCxPEsq7yQ1UHXhcVkyOAe0lpdJ43YOsqDKa74umr0g5v0vBU3JlnjewZExSytKORQjUTL6GjVYGHhIn_htaXAksZqcNeIo52-CMHEC-yjskqD03mBX6FcPi0yOrEq2F4Kx07raaS1FcWfLeA4RQtL7-HTgk14YsCUU4VvaYP0pWn-N4EoZIl0qMub7gyOKydXA55PR_h12arG08HCBKBY_JxSIURye2_Mep8TOaXzXjt2w147qqOq8W_eXe1RCBVqvrbeDVupT4vBuTFIebRsGAieqNY8tVtKBE2PDekHBVbDmxw1MLLv925SqScZuZCEcaWe4QscXoQ-jdpV48Ckm9E-kyIcioTAB1szvysUGd_6iMF4oUN_O2EpU-M1cfY4sWS01tf3BE5EMxltrrByM75S6HmZo5sxSNZOyQWOBZWkU-c8im_Q&secret=6LeRoVMUAAAAAOydcvloVnnhWrYteFzmFgZGbqam
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Fri, 17 Jan 2020 19:40:09 GMT
+      Expires:
+      - Fri, 17 Jan 2020 19:40:09 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |-
+        {
+          "success": true,
+          "challenge_ts": "2020-01-17T19:37:57Z",
+          "hostname": "localhost"
+        }
+    http_version: 
+  recorded_at: Fri, 17 Jan 2020 19:40:09 GMT
+recorded_with: VCR 3.0.3

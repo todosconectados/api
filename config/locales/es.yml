@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    attributes:
+      concern:
+        sns_snsable:
+          conference_code: 'Tú telefono quedo registrado %{phone} y tu código de conferencia es %{conference_code}'
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: 'is invalid'
+  notifications:
+    activation_message:
+      message: 'Tu código de verificación es: %{activation_code}.'
+    email_conference_code:
+      message: 'Tu telefono y codigo de conferencia se han procesado'
+      title: 'Registro completado'
