@@ -26,14 +26,6 @@ describe LeadsController do
       }
     end
 
-    before do
-
-    end
-
-    after do
-
-    end
-
     it 'should create a lead user' do
       post url, params: params
       expect(response).to have_http_status(:created)
