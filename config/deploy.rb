@@ -1,9 +1,10 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
-lock "~> 3.10.0"
+lock '~> 3.10.0'
 
-set :application, "todosconectados"
-set :repo_url, "git@github.com/todosconectados/api.git"
-
+set :application, 'todosconectados'
+set :repo_url, 'git@github.com/todosconectados/api.git'
 
 set :pty, false
 set :ssh_options, forward_agent: true, auth_methods: ['publickey']
@@ -50,4 +51,4 @@ set :migration_servers, -> { primary(fetch(:migration_role)) }
 # Skip migration if files in db/migrate were not modified
 set :conditionally_migrate, true
 # Defaults to [:web]
-set :assets_roles, [:web, :app]
+set :assets_roles, %i[web app]
