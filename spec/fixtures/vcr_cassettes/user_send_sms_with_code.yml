@@ -1,0 +1,276 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc?wsdl
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '18225'
+      Content-Type:
+      - text/xml; charset=UTF-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - POST,GET,OPTIONS
+      Date:
+      - Fri, 27 Mar 2020 21:13:33 GMT
+    body:
+      encoding: UTF-8
+      string: <?xml version="1.0" encoding="utf-8"?><wsdl:definitions name="ServicioInsertarSMS"
+        targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+        xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+        xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+        xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing"
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:tns="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+        xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"><wsdl:types><xsd:schema
+        targetNamespace="http://tempuri.org/Imports"><xsd:import schemaLocation="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc?xsd=xsd0"
+        namespace="http://tempuri.org/"/><xsd:import schemaLocation="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc?xsd=xsd1"
+        namespace="http://schemas.microsoft.com/2003/10/Serialization/"/><xsd:import
+        schemaLocation="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc?xsd=xsd2"
+        namespace="http://schemas.datacontract.org/2004/07/WCF_InsertaSMS"/><xsd:import
+        schemaLocation="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc?xsd=xsd3"
+        namespace="http://schemas.microsoft.com/Message"/></xsd:schema></wsdl:types><wsdl:message
+        name="IInsertaSMS_InOut_InputMessage"><wsdl:part name="parameters" element="tns:InOut"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InOut_OutputMessage"><wsdl:part name="parameters" element="tns:InOutResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaMensajes_ALL_ReturnID_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaMensajes_ALL_ReturnID"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaMensajes_ALL_ReturnID_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaMensajes_ALL_ReturnIDResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaMensajes_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaMensajes"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaMensajes_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaMensajesResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaMensajes_xl_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaMensajes_xl"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaMensajes_xl_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaMensajes_xlResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaMensajesBulk_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaMensajesBulk"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaMensajesBulk_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaMensajesBulkResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaMensajes_xl_Corto_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaMensajes_xl_Corto"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaMensajes_xl_Corto_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaMensajes_xl_CortoResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_ReportexCliente_InputMessage"><wsdl:part name="parameters"
+        element="tns:ReportexCliente"/></wsdl:message><wsdl:message name="IInsertaSMS_ReportexCliente_OutputMessage"><wsdl:part
+        name="parameters" element="tns:ReportexClienteResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_ReportexCliente_xl_InputMessage"><wsdl:part name="parameters"
+        element="tns:ReportexCliente_xl"/></wsdl:message><wsdl:message name="IInsertaSMS_ReportexCliente_xl_OutputMessage"><wsdl:part
+        name="parameters" element="tns:ReportexCliente_xlResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_ReporteRespuestas_xl_InputMessage"><wsdl:part name="parameters"
+        element="tns:ReporteRespuestas_xl"/></wsdl:message><wsdl:message name="IInsertaSMS_ReporteRespuestas_xl_OutputMessage"><wsdl:part
+        name="parameters" element="tns:ReporteRespuestas_xlResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_ReporteRespuestas_InputMessage"><wsdl:part name="parameters"
+        element="tns:ReporteRespuestas"/></wsdl:message><wsdl:message name="IInsertaSMS_ReporteRespuestas_OutputMessage"><wsdl:part
+        name="parameters" element="tns:ReporteRespuestasResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaDetalleEnvio_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaDetalleEnvio"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaDetalleEnvio_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaDetalleEnvioResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaDetalleEnvioDR_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaDetalleEnvioDR"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaDetalleEnvioDR_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaDetalleEnvioDRResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaDetalleEnvioBulk_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaDetalleEnvioBulk"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaDetalleEnvioBulk_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaDetalleEnvioBulkResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaRespuesta_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaRespuesta"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaRespuesta_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaRespuestaResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertaRespuesta_Origen_InputMessage"><wsdl:part name="parameters"
+        element="tns:InsertaRespuesta_Origen"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertaRespuesta_Origen_OutputMessage"><wsdl:part
+        name="parameters" element="tns:InsertaRespuesta_OrigenResponse"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_UpdateSMSFail_C3_InputMessage"><wsdl:part name="parameters"
+        element="tns:UpdateSMSFail_C3"/></wsdl:message><wsdl:message name="IInsertaSMS_UpdateSMSFail_C3_OutputMessage"><wsdl:part
+        name="parameters" element="tns:UpdateSMSFail_C3Response"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertMO_C3_InputMessage"><wsdl:part name="parameters" element="tns:InsertMO_C3"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertMO_C3_OutputMessage"><wsdl:part name="parameters"
+        element="tns:InsertMO_C3Response"/></wsdl:message><wsdl:message name="IInsertaSMS_InsertMO_Qbs_InputMessage"><wsdl:part
+        name="parameters" element="tns:InsertMO_Qbs"/></wsdl:message><wsdl:message
+        name="IInsertaSMS_InsertMO_Qbs_OutputMessage"><wsdl:part name="parameters"
+        element="tns:InsertMO_QbsResponse"/></wsdl:message><wsdl:portType name="IInsertaSMS"><wsdl:operation
+        name="InOut"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InOut"
+        message="tns:IInsertaSMS_InOut_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InOutResponse"
+        message="tns:IInsertaSMS_InOut_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaMensajes_ALL_ReturnID"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_ALL_ReturnID"
+        message="tns:IInsertaSMS_InsertaMensajes_ALL_ReturnID_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_ALL_ReturnIDResponse"
+        message="tns:IInsertaSMS_InsertaMensajes_ALL_ReturnID_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaMensajes"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes"
+        message="tns:IInsertaSMS_InsertaMensajes_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajesResponse"
+        message="tns:IInsertaSMS_InsertaMensajes_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaMensajes_xl"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_xl"
+        message="tns:IInsertaSMS_InsertaMensajes_xl_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_xlResponse"
+        message="tns:IInsertaSMS_InsertaMensajes_xl_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaMensajesBulk"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajesBulk"
+        message="tns:IInsertaSMS_InsertaMensajesBulk_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajesBulkResponse"
+        message="tns:IInsertaSMS_InsertaMensajesBulk_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaMensajes_xl_Corto"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_xl_Corto"
+        message="tns:IInsertaSMS_InsertaMensajes_xl_Corto_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaMensajes_xl_CortoResponse"
+        message="tns:IInsertaSMS_InsertaMensajes_xl_Corto_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="ReportexCliente"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/ReportexCliente"
+        message="tns:IInsertaSMS_ReportexCliente_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/ReportexClienteResponse"
+        message="tns:IInsertaSMS_ReportexCliente_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="ReportexCliente_xl"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/ReportexCliente_xl"
+        message="tns:IInsertaSMS_ReportexCliente_xl_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/ReportexCliente_xlResponse"
+        message="tns:IInsertaSMS_ReportexCliente_xl_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="ReporteRespuestas_xl"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/ReporteRespuestas_xl"
+        message="tns:IInsertaSMS_ReporteRespuestas_xl_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/ReporteRespuestas_xlResponse"
+        message="tns:IInsertaSMS_ReporteRespuestas_xl_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="ReporteRespuestas"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/ReporteRespuestas"
+        message="tns:IInsertaSMS_ReporteRespuestas_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/ReporteRespuestasResponse"
+        message="tns:IInsertaSMS_ReporteRespuestas_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaDetalleEnvio"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvio"
+        message="tns:IInsertaSMS_InsertaDetalleEnvio_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioResponse"
+        message="tns:IInsertaSMS_InsertaDetalleEnvio_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaDetalleEnvioDR"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioDR"
+        message="tns:IInsertaSMS_InsertaDetalleEnvioDR_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioDRResponse"
+        message="tns:IInsertaSMS_InsertaDetalleEnvioDR_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaDetalleEnvioBulk"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioBulk"
+        message="tns:IInsertaSMS_InsertaDetalleEnvioBulk_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioBulkResponse"
+        message="tns:IInsertaSMS_InsertaDetalleEnvioBulk_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaRespuesta"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaRespuesta"
+        message="tns:IInsertaSMS_InsertaRespuesta_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaRespuestaResponse"
+        message="tns:IInsertaSMS_InsertaRespuesta_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertaRespuesta_Origen"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaRespuesta_Origen"
+        message="tns:IInsertaSMS_InsertaRespuesta_Origen_InputMessage"/><wsdl:output
+        wsaw:Action="http://tempuri.org/IInsertaSMS/InsertaRespuesta_OrigenResponse"
+        message="tns:IInsertaSMS_InsertaRespuesta_Origen_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="UpdateSMSFail_C3"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/UpdateSMSFail_C3"
+        message="tns:IInsertaSMS_UpdateSMSFail_C3_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/UpdateSMSFail_C3Response"
+        message="tns:IInsertaSMS_UpdateSMSFail_C3_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertMO_C3"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertMO_C3"
+        message="tns:IInsertaSMS_InsertMO_C3_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertMO_C3Response"
+        message="tns:IInsertaSMS_InsertMO_C3_OutputMessage"/></wsdl:operation><wsdl:operation
+        name="InsertMO_Qbs"><wsdl:input wsaw:Action="http://tempuri.org/IInsertaSMS/InsertMO_Qbs"
+        message="tns:IInsertaSMS_InsertMO_Qbs_InputMessage"/><wsdl:output wsaw:Action="http://tempuri.org/IInsertaSMS/InsertMO_QbsResponse"
+        message="tns:IInsertaSMS_InsertMO_Qbs_OutputMessage"/></wsdl:operation></wsdl:portType><wsdl:binding
+        name="BasicHttpBinding_IInsertaSMS" type="tns:IInsertaSMS"><soap:binding transport="http://schemas.xmlsoap.org/soap/http"/><wsdl:operation
+        name="InOut"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InOut"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertaMensajes_ALL_ReturnID"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertaMensajes_ALL_ReturnID" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertaMensajes"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertaMensajes"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertaMensajes_xl"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertaMensajes_xl" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertaMensajesBulk"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertaMensajesBulk"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertaMensajes_xl_Corto"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertaMensajes_xl_Corto" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="ReportexCliente"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/ReportexCliente"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="ReportexCliente_xl"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/ReportexCliente_xl" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="ReporteRespuestas_xl"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/ReporteRespuestas_xl"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="ReporteRespuestas"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/ReporteRespuestas" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertaDetalleEnvio"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvio"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertaDetalleEnvioDR"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioDR" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertaDetalleEnvioBulk"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertaDetalleEnvioBulk"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertaRespuesta"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertaRespuesta" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertaRespuesta_Origen"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertaRespuesta_Origen"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="UpdateSMSFail_C3"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/UpdateSMSFail_C3" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation><wsdl:operation
+        name="InsertMO_C3"><soap:operation soapAction="http://tempuri.org/IInsertaSMS/InsertMO_C3"
+        style="document"/><wsdl:input><soap:body use="literal"/></wsdl:input><wsdl:output><soap:body
+        use="literal"/></wsdl:output></wsdl:operation><wsdl:operation name="InsertMO_Qbs"><soap:operation
+        soapAction="http://tempuri.org/IInsertaSMS/InsertMO_Qbs" style="document"/><wsdl:input><soap:body
+        use="literal"/></wsdl:input><wsdl:output><soap:body use="literal"/></wsdl:output></wsdl:operation></wsdl:binding><wsdl:service
+        name="ServicioInsertarSMS"><wsdl:port name="BasicHttpBinding_IInsertaSMS"
+        binding="tns:BasicHttpBinding_IInsertaSMS"><soap:address location="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc/mex"/></wsdl:port></wsdl:service></wsdl:definitions>
+    http_version: 
+  recorded_at: Fri, 27 Mar 2020 21:13:33 GMT
+- request:
+    method: post
+    uri: http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc/mex
+    body:
+      encoding: UTF-8
+      string: '<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://tempuri.org/"
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><tns:InsertaMensajes_xl><tns:Mensaje>Tu
+        código de verificación es: dgct.</tns:Mensaje><tns:CadenaTelefonos>4421304777</tns:CadenaTelefonos><tns:Usuario>GUSTAVO_ADMIN</tns:Usuario><tns:Password>gust4v0sms</tns:Password><tns:Lada>52</tns:Lada><tns:DobleVia>0</tns:DobleVia><tns:MMensaje>0</tns:MMensaje><tns:Campaña>0</tns:Campaña><tns:Prioridad>1</tns:Prioridad><tns:Auxiliar>0</tns:Auxiliar><tns:Auxiliar2>0</tns:Auxiliar2><tns:Origen>0</tns:Origen></tns:InsertaMensajes_xl></soapenv:Body></soapenv:Envelope>'
+    headers:
+      Soapaction:
+      - '"http://tempuri.org/IInsertaSMS/InsertaMensajes_xl"'
+      Content-Type:
+      - text/xml;charset=UTF-8
+      Content-Length:
+      - '771'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - private
+      Content-Length:
+      - '400'
+      Content-Type:
+      - text/xml; charset=utf-8
+      Server:
+      - Microsoft-IIS/8.0
+      X-Aspnet-Version:
+      - 4.0.30319
+      X-Powered-By:
+      - ASP.NET
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Allow-Headers:
+      - Content-Type
+      Access-Control-Allow-Methods:
+      - POST,GET,OPTIONS
+      Date:
+      - Fri, 27 Mar 2020 21:13:33 GMT
+    body:
+      encoding: UTF-8
+      string: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><InsertaMensajes_xlResponse
+        xmlns="http://tempuri.org/"><InsertaMensajes_xlResult xmlns:a="http://schemas.datacontract.org/2004/07/WCF_InsertaSMS"
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:code>200</a:code><a:message>60369505</a:message></InsertaMensajes_xlResult></InsertaMensajes_xlResponse></s:Body></s:Envelope>
+    http_version: 
+  recorded_at: Fri, 27 Mar 2020 21:13:35 GMT
+recorded_with: VCR 3.0.3
