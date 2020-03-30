@@ -3,8 +3,8 @@
 # config valid for current version and patch releases of Capistrano
 lock '~> 3.10.0'
 
-set :application, 'todosconectados'
-set :repo_url, 'git@github.com/todosconectados/api.git'
+set :application, 'todosconectados-api'
+set :repo_url, 'git@github.com:todosconectados/api.git'
 
 set :pty, false
 set :ssh_options, forward_agent: true, auth_methods: ['publickey']
