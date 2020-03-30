@@ -21,7 +21,7 @@ default: &default
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   host: <%= ENV.fetch("TODOS_CONECTADOS_DATABASE_HOST") { 'localhost' } %>
   username: <%= ENV['TODOS_CONECTADOS_USERNAME'] %>
-  password: "<%= ENV['TODOS_CONECTADOS_DATABASE_PASSWORD'] %>"
+  password: <%= ENV['TODOS_CONECTADOS_DATABASE_PASSWORD'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 6 } %>
 
 development:
