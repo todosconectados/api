@@ -12,7 +12,7 @@ describe User, type: :model do
     it 'should return error on invalid email' do
       user.email = "email"
       expect(user).to_not be_valid
-      expect(user.errors.messages[:email]).to eq ['is invalid']
+      expect(user.errors.messages[:email]).to eq ['es invalido']
     end
   end
 

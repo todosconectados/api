@@ -16,4 +16,15 @@ class ApplicationMailer < ActionMailer::Base
       subject: 'TodoConectados | Código de conferencia'
     )
   end
+
+  # Delivers a new HTML email template for the given parameters
+  # @param extension [Lead] - Lead instance
+  # @return nil
+  def leads_contact_email(lead)
+    @lead = lead
+    mail(
+      to: ENV['LEAD_RECIPIENTS'],
+      subject: 'TodoConectados | Contacto'
+    )
+  end
 end

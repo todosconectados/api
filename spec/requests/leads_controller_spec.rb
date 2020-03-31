@@ -27,10 +27,13 @@ describe LeadsController do
     end
 
     it 'should create a lead user' do
-      post url, params: params
+      VCR.use_cassette('leads_creation_sended_email',
+        match_requests_on: [:ses_api]) do
+          post url, params: params
+      end
       expect(response).to have_http_status(:created)
       lead_data = json['lead']
-      expected_data = params[:leads]
+      expected_data = params[:lead]
       expect(lead_data['name']).to eq(expected_data[:name])
       expect(lead_data['company_name']).to eq(expected_data[:company_name])
       expect(lead_data['email']).to eq(expected_data[:email])
