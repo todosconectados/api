@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   validates :name, :phone, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, uniqueness: true
   validates :phone, length: { is: 10 }
 
   module Status
