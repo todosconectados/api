@@ -369,7 +369,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.3.2)
   savon (~> 2.12.0)
   selenium-webdriver
-  sentry-raven
+  sentry-raven (~> 3.0.0)
   shoulda-matchers (~> 3.1)
   slack-ruby-client (~> 0.13.1)
   spring

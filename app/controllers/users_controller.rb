@@ -51,7 +51,7 @@ class UsersController < ApplicationController
   # or validation errors if any
   def validate
     @user.update! phone: params[:phone]
-    @user.generate_activation_code! if @user.status == User::Status::STEP1
+    @user.generate_activation_code!
     @user.send_activation_code!
     head :ok
   end
