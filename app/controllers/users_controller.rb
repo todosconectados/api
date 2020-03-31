@@ -50,13 +50,8 @@ class UsersController < ApplicationController
   # @return [JSON] JSON response with http status 200
   # or validation errors if any
   def validate
-<<<<<<< HEAD
     @user.update! phone: params[:phone]
     @user.generate_activation_code! if @user.status == User::Status::STEP1
-=======
-    @user.update! phone: params.require(:phone)
-    @user.generate_activation_code!
->>>>>>> 06b673c753f4cd7f3ba50a1c8582b1731d284622
     @user.send_activation_code!
     head :ok
   end

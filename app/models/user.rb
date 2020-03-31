@@ -68,7 +68,7 @@ class User < ApplicationRecord
                dialers.sample
              else
                dialers.first!
-              end
+             end
     update!(status: User::Status::ACTIVE, dialer: dialer)
   end
 

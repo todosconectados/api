@@ -33,7 +33,7 @@ describe LeadsController do
       end
       expect(response).to have_http_status(:created)
       lead_data = json['lead']
-      expected_data = params[:leads]
+      expected_data = params[:lead]
       expect(lead_data['name']).to eq(expected_data[:name])
       expect(lead_data['company_name']).to eq(expected_data[:company_name])
       expect(lead_data['email']).to eq(expected_data[:email])

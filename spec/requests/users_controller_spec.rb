@@ -47,7 +47,7 @@ describe UsersController do
       end
       expect(response).to have_http_status(:created)
       user_data = json['user']
-      expected_data = params[:users]
+      expected_data = params[:user]
       expect(user_data['name']).to eq(expected_data[:name])
       expect(user_data['last_names']).to eq(expected_data[:last_names])
       expect(user_data['email']).to eq(expected_data[:email])
