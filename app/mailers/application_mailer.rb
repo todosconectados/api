@@ -23,7 +23,7 @@ class ApplicationMailer < ActionMailer::Base
   def leads_contact_email(lead)
     @lead = lead
     mail(
-      to: lead.email,
+      to: ENV['LEAD_RECIPIENTS'],
       subject: 'TodoConectados | Contacto'
     )
   end
