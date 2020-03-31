@@ -4,7 +4,7 @@ describe UsersController do
 
     let!(:params) do
         {
-          users: {
+          user: {
             name: 'Emmanuel Amaury',
             last_names: 'Fuentes Venegas',
             email: 'fuentesamaury@hotmail.com',
@@ -28,7 +28,7 @@ describe UsersController do
 
     let!(:invalid_recaptcha) do
       {
-        users: {
+        user: {
           name: 'Emmanuel Amaury',
           last_names: 'Fuentes Venegas',
           email: 'fuentesamaury@hotmail.com',
@@ -107,18 +107,12 @@ describe UsersController do
 
   describe 'POST /users/:id/activate' do
     let!(:user) do
-      create :user,
-      phone: '5522522113',
-      activation_code: '1234'
+      create :user, phone: '5522522113', activation_code: '1234'
     end
 
-    let!(:dialer) do
-      create :dialer
-    end
+    let!(:dialer) { create :dialer }
 
-    let!(:url) do
-      activate_user_url(user.id)
-    end
+    let!(:url) { activate_user_url(user.id) }
 
     it 'should update user status to active if activation_code correct' do
       VCR.use_cassette('user_sended_email',
@@ -129,8 +123,13 @@ describe UsersController do
         end
       end
       expect(response).to have_http_status(:ok)
+      user_data = json['user']
+      expect(user_data['id']).to eq(user.id)
+      dialer_data = user_data['dialer']
+      expect(dialer_data['did']).to eq(dialer.did)
+      expect(dialer_data['conference_code']).to eq(dialer.conference_code)
       user.reload
-      expect(user.status.to_sym).to eq(User::Status::ACTIVE)
+      expect(user).to be_active
     end
 
     it 'should return Record not found if phone not found' do

@@ -7,5 +7,12 @@ class UserSerializer < ApplicationSerializer
              :email,
              :phone,
              :status,
-             :activation_code
+             :activation_code,
+             :dialer
+
+  def dialer
+    return if object.dialer.nil?
+
+    DialerSerializer.new(object.dialer).as_json
+  end
 end

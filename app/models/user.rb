@@ -9,6 +9,7 @@ class User < ApplicationRecord
 
   validates :name, :phone, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
+  validates :email, uniqueness: true
   validates :phone, length: { is: 10 }
 
   module Status
@@ -62,7 +63,12 @@ class User < ApplicationRecord
   # +user+ status to active
   # return true
   def complete_and_asign_dialer!
-    dialer = Dialer.reserved.first!
+    dialers = Dialer.reserved
+    dialer = if dialers.any?
+               dialers.sample
+             else
+               dialers.first!
+              end
     update!(status: User::Status::ACTIVE, dialer: dialer)
   end
 
