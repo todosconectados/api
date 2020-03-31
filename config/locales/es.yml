@@ -3,7 +3,7 @@ es:
     attributes:
       concern:
         sns_snsable:
-          conference_code: 'Tú telefono quedo registrado %{phone} y tu código de conferencia es %{conference_code}'
+          conference_code: 'Tú telefono quedo registrado %{did} y tu código de conferencia es %{conference_code}'
     errors:
       models:
         user:
