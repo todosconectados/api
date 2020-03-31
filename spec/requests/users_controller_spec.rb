@@ -40,7 +40,10 @@ describe UsersController do
 
     it 'should create a valid user with a valid recaptcha' do
       VCR.use_cassette('grecaptcha_valid', match_requests_on: [:grecaptcha]) do
-        post url, params: params
+        VCR.use_cassette('notify_new_user_step1_to_slack',
+          match_requests_on: [:slack_api]) do
+          post url, params: params
+        end
       end
       expect(response).to have_http_status(:created)
       user_data = json['user']

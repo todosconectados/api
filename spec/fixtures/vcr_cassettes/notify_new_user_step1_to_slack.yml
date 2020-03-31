@@ -1,0 +1,86 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://slack.com/api/chat.postMessage
+    body:
+      encoding: UTF-8
+      string: attachments=%5B%7B%22color%22%3A%22%23FF0000%22%2C%22fields%22%3A%5B%7B%22title%22%3A%22ID%22%2C%22value%22%3A1%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Nombre%22%2C%22value%22%3A%22Emmanuel+Amaury+Fuentes+Venegas%22%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Tel%C3%A9fono%22%2C%22value%22%3A%224421304777%22%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Correo+electronico%22%2C%22value%22%3A%22fuentesamaury%40hotmail.com%22%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Status%22%2C%22value%22%3A%22step1%22%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Fecha+de+creaci%C3%B3n%22%2C%22value%22%3A%222020-03-31+12%3A17%3A06+-0600%22%2C%22short%22%3Atrue%7D%2C%7B%22title%22%3A%22Fecha+de+ultima+actualizaci%C3%B3n%22%2C%22value%22%3A%222020-03-31+12%3A17%3A06+-0600%22%2C%22short%22%3Atrue%7D%5D%7D%5D&channel=%23gcomm-calls-test&text=Nuevo+registro+de+usuario&token=xoxp-88483106676-149976908290-532453745364-75612dfef76b8d4fe8a13c68c2220116
+    headers:
+      Accept:
+      - application/json; charset=utf-8
+      User-Agent:
+      - Slack Ruby Client/0.13.1
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Content-Length:
+      - '425'
+      Connection:
+      - keep-alive
+      Date:
+      - Tue, 31 Mar 2020 18:17:06 GMT
+      Server:
+      - Apache
+      X-Slack-Req-Id:
+      - 72d6666296aa0caaf0108ad61028e4b9
+      X-Oauth-Scopes:
+      - identify,incoming-webhook,chat:write:bot
+      X-Accepted-Oauth-Scopes:
+      - chat:write:bot
+      Access-Control-Expose-Headers:
+      - x-slack-req-id, retry-after
+      X-Slack-Backend:
+      - h
+      X-Content-Type-Options:
+      - nosniff
+      Expires:
+      - Mon, 26 Jul 1997 05:00:00 GMT
+      Cache-Control:
+      - private, no-cache, no-store, must-revalidate
+      X-Xss-Protection:
+      - '0'
+      Vary:
+      - Accept-Encoding
+      Pragma:
+      - no-cache
+      Access-Control-Allow-Headers:
+      - slack-route, x-slack-version-ts, x-b3-traceid, x-b3-spanid, x-b3-parentspanid,
+        x-b3-sampled, x-b3-flags
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains; preload
+      Referrer-Policy:
+      - no-referrer
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Via:
+      - haproxy-www-1j27
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 a72ebc92bbf5fa76a0ca9f215cd3056c.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - IAH50-C2
+      X-Amz-Cf-Id:
+      - q_Q_tQqC1VaMMmm8VaHI5SkTefH7v_J9OfDS59nE3H5YrpiRI9omMg==
+    body:
+      encoding: ASCII-8BIT
+      string: '{"ok":true,"channel":"GFS5DJUH1","ts":"1585678626.000100","message":{"type":"message","subtype":"bot_message","text":"Nuevo
+        registro de usuario","ts":"1585678626.000100","username":"Gcomm Notification
+        Service","bot_id":"BFNF3GTNF","attachments":[{"id":1,"color":"FF0000","fields":[{"title":"ID","value":"1","short":true},{"title":"Nombre","value":"Emmanuel
+        Amaury Fuentes Venegas","short":true},{"title":"Tel\u00e9fono","value":"4421304777","short":true},{"title":"Correo
+        electronico","value":"<mailto:fuentesamaury@hotmail.com|fuentesamaury@hotmail.com>","short":true},{"title":"Status","value":"step1","short":true},{"title":"Fecha
+        de creaci\u00f3n","value":"2020-03-31 12:17:06 -0600","short":true},{"title":"Fecha
+        de ultima actualizaci\u00f3n","value":"2020-03-31 12:17:06 -0600","short":true}],"fallback":"[no
+        preview available]"}]}}'
+    http_version: 
+  recorded_at: Tue, 31 Mar 2020 18:17:06 GMT
+recorded_with: VCR 3.0.3

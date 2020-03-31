@@ -22,7 +22,6 @@ Recaptcha.configuration.skip_verify_env.delete('test')
 VCR.configure do |config|
   config.cassette_library_dir = 'spec/fixtures/vcr_cassettes'
   config.hook_into :webmock
-
   # google recaptcha
   config.register_request_matcher :grecaptcha do |real_request, recorded_request|
     url_regex = /^https:\/\/www.google.com\/recaptcha\/api\/siteverify.*$/
@@ -31,6 +30,7 @@ VCR.configure do |config|
       url_regex.match(recorded_request.uri)
     )
   end
+
   # Marcatel API
   config.register_request_matcher :marcatel_api do |real_request, recorded_request|
     url_regex = /^https:\/\/b2c.marcatel.com.mx.*$/
@@ -40,6 +40,7 @@ VCR.configure do |config|
         url_regex.match(recorded_request.uri)
       )
   end
+
   # aws ses API
   config.register_request_matcher :ses_api do |real_request, recorded_request|
     url_regex = /^https:\/\/email\.us-west-2\.amazonaws\.com.*$/
@@ -52,6 +53,16 @@ VCR.configure do |config|
       (
         s3_url_regex.match(real_request.uri) &&
         s3_url_regex.match(recorded_request.uri)
+      )
+  end
+
+  # slack api
+  config.register_request_matcher :slack_api do |real_request, recorded_request|
+    url_regex = /^https:\/\/slack\.com\/api.*$/
+    real_request.uri == recorded_request.uri ||
+      (
+        url_regex.match(real_request.uri) &&
+        url_regex.match(recorded_request.uri)
       )
   end
 end

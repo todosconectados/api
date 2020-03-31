@@ -30,6 +30,7 @@ class UsersController < ApplicationController
   # }
   def create
     user = User.create! create_params
+    user.notify_slack!
     json_response user, :created
   end
 
@@ -50,7 +51,7 @@ class UsersController < ApplicationController
   # or validation errors if any
   def validate
     @user.update! phone: params[:phone]
-    @user.generate_activation_code!
+    @user.generate_activation_code! if @user.status == User::Status::STEP1
     @user.send_activation_code!
     head :ok
   end

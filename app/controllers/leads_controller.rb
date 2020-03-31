@@ -26,6 +26,7 @@ class LeadsController < ApplicationController
   # }
   def create
     lead = Lead.create! create_params
+    lead.send_leads_contact_email!
     json_response lead, :created
   end
 
