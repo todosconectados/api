@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def activate
     @user.complete_and_asign_dialer!
     @user.send_conference_code!
-    head :ok
+    json_response @user
   end
 
   # Generates a new +User+ for the given params.
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   # @return [JSON] JSON response with http status 200
   # or validation errors if any
   def validate
-    @user.update! phone: params[:phone]
+    @user.update! phone: params.require(:phone)
     @user.generate_activation_code!
     @user.send_activation_code!
     head :ok

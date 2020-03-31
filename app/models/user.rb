@@ -51,12 +51,12 @@ class User < ApplicationRecord
   end
 
   def complete_and_asign_dialer!
-		dialers = Dialer.reserved
-		dialer = if dialers.any?
-							 dialers.shuffle.first
-		          else
-								dialers.first!
-		          end
-		update!(status: User::Status::ACTIVE, dialer: dialer)
+    dialers = Dialer.reserved
+    dialer = if dialers.any?
+               dialers.sample
+             else
+               dialers.first!
+              end
+    update!(status: User::Status::ACTIVE, dialer: dialer)
   end
 end
