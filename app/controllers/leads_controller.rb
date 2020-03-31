@@ -35,7 +35,7 @@ class LeadsController < ApplicationController
   # @return ActionController::Parameters
   # @private
   def create_params
-    params.require(:leads).permit(
+    params.require(:lead).permit(
       :name,
       :company_name,
       :email,

@@ -61,7 +61,7 @@ class UsersController < ApplicationController
   # @return ActionController::Parameters
   # @private
   def create_params
-    params.require(:users).permit(
+    params.require(:user).permit(
       :name,
       :last_names,
       :email,

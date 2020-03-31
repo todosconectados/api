@@ -4,7 +4,7 @@ describe UsersController do
 
     let!(:params) do
         {
-          users: {
+          user: {
             name: 'Emmanuel Amaury',
             last_names: 'Fuentes Venegas',
             email: 'fuentesamaury@hotmail.com',
@@ -28,7 +28,7 @@ describe UsersController do
 
     let!(:invalid_recaptcha) do
       {
-        users: {
+        user: {
           name: 'Emmanuel Amaury',
           last_names: 'Fuentes Venegas',
           email: 'fuentesamaury@hotmail.com',
