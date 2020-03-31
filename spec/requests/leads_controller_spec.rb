@@ -4,7 +4,7 @@ describe LeadsController do
 
     let!(:params) do
         {
-          leads: {
+          lead: {
             name: 'Emmanuel Amaury Fuentes Venegas',
             company_name: 'Black Mesa',
             email: 'fuentesamaury@hotmail.com',
