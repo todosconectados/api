@@ -7,6 +7,8 @@ describe User, type: :model do
     it { should validate_presence_of :phone }
     it { should validate_length_of(:phone).is_equal_to 10 }
 
+    it { should validate_uniqueness_of(:email) }
+
     it 'should return error on invalid email' do
       user.email = "email"
       expect(user).to_not be_valid
