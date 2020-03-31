@@ -1,15 +1,24 @@
 es:
   activerecord:
-    attributes:
+    attributes  :
       concern:
         sns_snsable:
           conference_code: 'Tú telefono quedo registrado %{did} y tu código de conferencia es %{conference_code}'
     errors:
+      format: "%{attribute} %{message}"
+      messages:
+        record_invalid: "La validación falló: %{errors}"
+        restrict_dependent_destroy:
+          has_one: No se puede eliminar el registro porque existe un %{record} dependiente
+          has_many: No se puede eliminar el registro porque existen %{record} dependientes
       models:
         user:
           attributes:
+            phone:
+              blank: 'Teléfono no puede estar en blanco'
+              wrong_length: 'La longitud del teléfono no es la adecuada (10)'
             email:
-              invalid: 'is invalid'
+              invalid: 'es invalido'
   notifications:
     activation_message:
       message: 'Tu código de verificación es: %{activation_code}.'

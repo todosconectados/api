@@ -8,7 +8,7 @@ http_interactions:
       string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://tempuri.org/"
         xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><tns:InsertaMensajes_xl><tns:Mensaje>Tú
-        telefono quedo registrado 5522522113 y tu código de conferencia es 5283</tns:Mensaje><tns:CadenaTelefonos>5522522113</tns:CadenaTelefonos><tns:Usuario>GUSTAVO_ADMIN</tns:Usuario><tns:Password>gust4v0sms</tns:Password><tns:Lada>52</tns:Lada><tns:DobleVia>0</tns:DobleVia><tns:MMensaje>0</tns:MMensaje><tns:Campaña>0</tns:Campaña><tns:Prioridad>1</tns:Prioridad><tns:Auxiliar>0</tns:Auxiliar><tns:Auxiliar2>0</tns:Auxiliar2><tns:Origen>0</tns:Origen></tns:InsertaMensajes_xl></soapenv:Body></soapenv:Envelope>
+        telefono quedo registrado 5522522113 y tu código de conferencia es 5283</tns:Mensaje><tns:CadenaTelefonos>5522522113</tns:CadenaTelefonos><tns:Usuario>xxxxxx</tns:Usuario><tns:Password>xxxxxx</tns:Password><tns:Lada>52</tns:Lada><tns:DobleVia>0</tns:DobleVia><tns:MMensaje>0</tns:MMensaje><tns:Campaña>0</tns:Campaña><tns:Prioridad>1</tns:Prioridad><tns:Auxiliar>0</tns:Auxiliar><tns:Auxiliar2>0</tns:Auxiliar2><tns:Origen>0</tns:Origen></tns:InsertaMensajes_xl></soapenv:Body></soapenv:Envelope>
     headers:
       Soapaction:
       - '"http://tempuri.org/IInsertaSMS/InsertaMensajes_xl"'

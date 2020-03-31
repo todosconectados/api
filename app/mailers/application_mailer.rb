@@ -21,6 +21,14 @@ class ApplicationMailer < ActionMailer::Base
     )
   end
 
+  def leads_contact_email(lead)
+    @lead = lead
+    mail(
+      to: ENV['LEAD_RECIPIENTS'],
+      subject: 'TodoConectados | Contacto'
+    )
+  end
+
   private
 
   def set_links!

@@ -39,6 +39,17 @@ module TodosConectados
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+    config.filter_parameters << :password
+    # sentry config
+    # comment these lines out if integration with sentry is required
+    Raven.configure do |config|
+      config.dsn = ENV['SENTRY_DSN']
+      config.sanitize_fields = Rails
+                               .application
+                               .config
+                               .filter_parameters
+                               .map(&:to_s)
+    end
     # i18n config
     config.i18n.default_locale = :es
   end

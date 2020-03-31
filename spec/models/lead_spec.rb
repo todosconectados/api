@@ -10,7 +10,20 @@ describe Lead, type: :model do
     it 'should return error on invalid email' do
       user.email = "email"
       expect(user).to_not be_valid
-      expect(user.errors.messages[:email]).to eq ['is invalid']
+      expect(user.errors.messages[:email]).to eq ['es invalido']
+    end
+  end
+
+  describe '#send_leads_contact_email!' do
+    let!(:lead) do
+      create :lead
+    end
+
+    it 'should send email to Lead User' do
+      VCR.use_cassette('leads_creation_sended_email',
+        match_requests_on: [:ses_api]) do
+        lead.send_leads_contact_email!
+      end
     end
   end
 end

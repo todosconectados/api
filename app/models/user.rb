@@ -2,6 +2,7 @@
 
 # It contains all the information of the user
 class User < ApplicationRecord
+  include Slackable
   include Snsable
 
   has_one :dialer, dependent: :destroy
@@ -13,9 +14,15 @@ class User < ApplicationRecord
 
   module Status
     STEP1 = :step1
+    INTERMEDIATE = :intermediate
     ACTIVE = :active
     TERMINATED = :terminated
-    LIST = { STEP1 => 0, ACTIVE => 1, TERMINATED => 2 }.freeze
+    LIST = {
+      STEP1 => 0,
+      INTERMEDIATE => 1,
+      ACTIVE => 2,
+      TERMINATED => 3
+    }.freeze
   end
 
   enum status: Status::LIST
@@ -27,6 +34,7 @@ class User < ApplicationRecord
     self[:activation_code] = RandomPasswordGenerator.generate(
       4, skip_upper_case: true, skip_symbols: true, skip_url_unsafe: true
     )
+    self[:status] = Status::INTERMEDIATE
     save!
   end
 
@@ -51,6 +59,9 @@ class User < ApplicationRecord
     ApplicationMailer.email_conference_code(self).deliver_later
   end
 
+  # Last step for SIGNUP, it assigns a reserved DIALER and update
+  # +user+ status to active
+  # return true
   def complete_and_asign_dialer!
     dialers = Dialer.reserved
     dialer = if dialers.any?
@@ -59,5 +70,41 @@ class User < ApplicationRecord
                dialers.first!
              end
     update!(status: User::Status::ACTIVE, dialer: dialer)
+  end
+
+  # build message and send to slack channel
+  # @return nil
+  def notify_slack!
+    post_to_slack(
+      ENV['USER_SIGNUP_CHANNEL'],
+      to_slack_notification!
+    )
+  end
+
+  # name and last_name
+  # @return String
+  def full_name
+    "#{name} #{last_names}"
+  end
+
+  private
+
+  # build slack message
+  # @return Hash - Slack Message
+  def to_slack_notification!
+    fields = [
+      field('ID', id, true),
+      field('Nombre', full_name, true),
+      field('Teléfono', phone, true),
+      field('Correo electronico', email, true),
+      field('Status', status, true),
+      field('Fecha de creación', created_at, true),
+      field('Fecha de ultima actualización', updated_at, true)
+    ]
+    color = Priority.color 2
+    {
+      text: 'Nuevo registro de usuario',
+      attachments: [{ color: color, fields: fields }]
+    }
   end
 end

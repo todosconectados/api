@@ -19,7 +19,8 @@ set :ssh_options, forward_agent: true, auth_methods: ['publickey']
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
-# set :format_options, command_output: true, log_file: "log/capistrano.log", color: :auto, truncate: :auto
+# set :format_options, command_output: true, log_file: "log/capistrano.log",
+# color: :auto, truncate: :auto
 
 # Default value for :pty is false
 # set :pty, true
@@ -40,7 +41,8 @@ append :linked_dirs, 'log', 'tmp/pids', 'tmp/cache', 'tmp/sockets',
 # Default value for keep_releases is 5
 set :keep_releases, 2
 
-# Uncomment the following to require manually verifying the host key before first deploy.
+# Uncomment the following to require manually verifying the host key before
+# first deploy.
 # set :ssh_options, verify_host_key: :secure
 
 # Defaults to :db role
