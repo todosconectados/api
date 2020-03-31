@@ -51,7 +51,7 @@ class User < ApplicationRecord
   end
 
   def complete_and_asign_dialer!
-    dialer = Dialer.reserved.first!
+		dialer = Dialer.reserved.shuffle.first!
     update!(status: User::Status::ACTIVE, dialer: dialer)
   end
 end
