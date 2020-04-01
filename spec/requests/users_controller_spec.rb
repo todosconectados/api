@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe UsersController do
   describe 'POST /users' do
     let!(:url) { users_url }
@@ -38,7 +40,7 @@ describe UsersController do
     it 'should create a valid user with a valid recaptcha' do
       VCR.use_cassette('grecaptcha_valid', match_requests_on: [:grecaptcha]) do
         VCR.use_cassette('notify_new_user_step1_to_slack',
-          match_requests_on: [:slack_api]) do
+                         match_requests_on: [:slack_api]) do
           post url, params: params
         end
       end
@@ -81,7 +83,7 @@ describe UsersController do
 
     it 'should update validation code update phone and send sms with code' do
       VCR.use_cassette('user_send_sms_with_code',
-        match_requests_on: [:marcatel_api]) do
+                       match_requests_on: [:marcatel_api]) do
         post url, params: { phone: '4421304777' }
       end
       expect(response).to have_http_status(:ok)
@@ -99,7 +101,8 @@ describe UsersController do
 
   describe 'POST /users/:id/activate' do
     let!(:user) do
-      create :user, phone: '5522522113', activation_code: '1234'
+      create :user, :intermediate,
+        phone: '5522522113', activation_code: '1234'
     end
 
     let!(:dialer) { create :dialer }
@@ -107,10 +110,10 @@ describe UsersController do
     let!(:url) { activate_user_url(user.id) }
 
     it 'should update user status to active if activation_code correct' do
-      VCR.use_cassette('user_sended_email',
-        match_requests_on: [:ses_api]) do
+      VCR.use_cassette('user_send_conference_code_email',
+                       match_requests_on: [:ses_api]) do
         VCR.use_cassette('user_send_sms_with_code',
-          match_requests_on: [:marcatel_api]) do
+                         match_requests_on: [:marcatel_api]) do
           post url, params: { activation_code: '1234' }
         end
       end

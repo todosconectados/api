@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence :unique_email do |n|
     "user_specs#{n}_#{Faker::Internet.safe_email}"
@@ -10,5 +12,9 @@ FactoryBot.define do
     phone { Faker::Number.number(10) }
     status { User::Status::STEP1 }
     activation_code { Faker::Number.number(4) }
+
+    trait :intermediate do
+      status { User::Status::INTERMEDIATE }
+    end
   end
 end

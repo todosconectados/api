@@ -81,7 +81,6 @@ class UsersController < ApplicationController
   # @raise ActiveRecord::RecordNotFound
   # @return User
   def assert_user_with_activation_code!
-    binding.pry
     @user = User.intermediate.find_by!(
       id: params[:id],
       activation_code: params[:activation_code]

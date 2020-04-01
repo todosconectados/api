@@ -26,7 +26,7 @@ class ApplicationController < ActionController::API
   # This method should be called as part of a +before_action+ filter
   # @return nil
   def validate_recaptcha!
-    return if true
+    return if verify_recaptcha
 
     json_response({ message: 'Invalid Recaptcha' }, :unprocessable_entity)
   end

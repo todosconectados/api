@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 describe LeadsController do
   describe 'POST /leads' do
     let!(:url) { leads_url }
 
     let!(:params) do
-        {
-          lead: {
-            name: 'Emmanuel Amaury Fuentes Venegas',
-            company_name: 'Black Mesa',
-            email: 'fuentesamaury@hotmail.com',
-            phone: '4421304777',
-            comments: 'You shall pass'
-          }
+      {
+        lead: {
+          name: 'Emmanuel Amaury Fuentes Venegas',
+          company_name: 'Black Mesa',
+          email: 'fuentesamaury@hotmail.com',
+          phone: '4421304777',
+          comments: 'You shall pass'
         }
+      }
     end
 
     let!(:invalid_params) do
@@ -27,9 +29,9 @@ describe LeadsController do
     end
 
     it 'should create a lead user' do
-      VCR.use_cassette('leads_creation_sended_email',
-        match_requests_on: [:ses_api]) do
-          post url, params: params
+      VCR.use_cassette('leads_creation_email',
+                       match_requests_on: [:ses_api]) do
+        post url, params: params
       end
       expect(response).to have_http_status(:created)
       lead_data = json['lead']

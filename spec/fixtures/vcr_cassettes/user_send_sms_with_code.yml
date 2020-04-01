@@ -37,7 +37,7 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST,GET,OPTIONS
       Date:
-      - Wed, 01 Apr 2020 04:24:30 GMT
+      - Wed, 01 Apr 2020 15:49:00 GMT
     body:
       encoding: UTF-8
       string: <?xml version="1.0" encoding="utf-8"?><wsdl:definitions name="ServicioInsertarSMS"
@@ -218,23 +218,23 @@ http_interactions:
         name="ServicioInsertarSMS"><wsdl:port name="BasicHttpBinding_IInsertaSMS"
         binding="tns:BasicHttpBinding_IInsertaSMS"><soap:address location="http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc/mex"/></wsdl:port></wsdl:service></wsdl:definitions>
     http_version: 
-  recorded_at: Wed, 01 Apr 2020 04:24:30 GMT
+  recorded_at: Wed, 01 Apr 2020 15:49:01 GMT
 - request:
     method: post
     uri: http://b2c.marcatel.com.mx/MarcatelSMSWCF/ServicioInsertarSMS.svc/mex
     body:
       encoding: UTF-8
-      string: <?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+      string: '<?xml version="1.0" encoding="UTF-8"?><soapenv:Envelope xmlns:xsd="http://www.w3.org/2001/XMLSchema"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tns="http://tempuri.org/"
-        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><tns:InsertaMensajes_xl><tns:Mensaje>Tú
-        telefono quedo registrado 4290626903 y tu código de conferencia es 2399</tns:Mensaje><tns:CadenaTelefonos>4290626903</tns:CadenaTelefonos><tns:Usuario>GUSTAVO_ADMIN</tns:Usuario><tns:Password>gust4v0sms</tns:Password><tns:Lada>52</tns:Lada><tns:DobleVia>0</tns:DobleVia><tns:MMensaje>0</tns:MMensaje><tns:Campaña>0</tns:Campaña><tns:Prioridad>1</tns:Prioridad><tns:Auxiliar>0</tns:Auxiliar><tns:Auxiliar2>0</tns:Auxiliar2><tns:Origen>0</tns:Origen></tns:InsertaMensajes_xl></soapenv:Body></soapenv:Envelope>
+        xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><tns:InsertaMensajes_xl><tns:Mensaje>Tu
+        código de verificación es: 3j9g.</tns:Mensaje><tns:CadenaTelefonos>4421304777</tns:CadenaTelefonos><tns:Usuario>GUSTAVO_ADMIN</tns:Usuario><tns:Password>gust4v0sms</tns:Password><tns:Lada>52</tns:Lada><tns:DobleVia>0</tns:DobleVia><tns:MMensaje>0</tns:MMensaje><tns:Campaña>0</tns:Campaña><tns:Prioridad>1</tns:Prioridad><tns:Auxiliar>0</tns:Auxiliar><tns:Auxiliar2>0</tns:Auxiliar2><tns:Origen>0</tns:Origen></tns:InsertaMensajes_xl></soapenv:Body></soapenv:Envelope>'
     headers:
       Soapaction:
       - '"http://tempuri.org/IInsertaSMS/InsertaMensajes_xl"'
       Content-Type:
       - text/xml;charset=UTF-8
       Content-Length:
-      - '810'
+      - '771'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -249,7 +249,7 @@ http_interactions:
       Cache-Control:
       - private
       Content-Length:
-      - '407'
+      - '400'
       Content-Type:
       - text/xml; charset=utf-8
       Server:
@@ -265,12 +265,12 @@ http_interactions:
       Access-Control-Allow-Methods:
       - POST,GET,OPTIONS
       Date:
-      - Wed, 01 Apr 2020 04:24:30 GMT
+      - Wed, 01 Apr 2020 15:49:00 GMT
     body:
       encoding: UTF-8
       string: <s:Envelope xmlns:s="http://schemas.xmlsoap.org/soap/envelope/"><s:Body><InsertaMensajes_xlResponse
         xmlns="http://tempuri.org/"><InsertaMensajes_xlResult xmlns:a="http://schemas.datacontract.org/2004/07/WCF_InsertaSMS"
-        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:code>200</a:code><a:message>Numero_Invalido</a:message></InsertaMensajes_xlResult></InsertaMensajes_xlResponse></s:Body></s:Envelope>
+        xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><a:code>200</a:code><a:message>60928345</a:message></InsertaMensajes_xlResult></InsertaMensajes_xlResponse></s:Body></s:Envelope>
     http_version: 
-  recorded_at: Wed, 01 Apr 2020 04:24:30 GMT
+  recorded_at: Wed, 01 Apr 2020 15:49:01 GMT
 recorded_with: VCR 3.0.3

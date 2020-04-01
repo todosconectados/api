@@ -5,7 +5,7 @@ class User < ApplicationRecord
   include Slackable
   include Snsable
 
-  has_one :dialer, dependent: :destroy
+  has_one :dialer, dependent: :nullify
 
   validates :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
@@ -54,7 +54,7 @@ class User < ApplicationRecord
     send_sms!(
       self[:phone],
       I18n.t('activerecord.attributes.concern.sns_snsable.conference_code',
-             phone: phone, conference_code: dialer.conference_code)
+             did: dialer.did, conference_code: dialer.conference_code)
     )
     ApplicationMailer.email_conference_code(self).deliver_later
   end
@@ -70,15 +70,16 @@ class User < ApplicationRecord
                dialers.first!
              end
     update!(status: User::Status::ACTIVE, dialer: dialer)
+    dialer.update! status: Status::ACTIVE
   end
 
   # build message and send to slack channel
   # @return nil
   def notify_slack!
-    # post_to_slack(
-    #   ENV['USER_SIGNUP_CHANNEL'],
-    #   to_slack_notification!
-    # )
+    post_to_slack(
+      ENV['USER_SIGNUP_CHANNEL'],
+      to_slack_notification!
+    )
   end
 
   # name and last_name
