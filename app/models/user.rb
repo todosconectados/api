@@ -69,7 +69,8 @@ class User < ApplicationRecord
              else
                dialers.first!
              end
-    update!(status: User::Status::ACTIVE, dialer: dialer)
+    update! status: User::Status::ACTIVE, dialer: dialer
+    dialer.update! status: Dialer::Status::ACTIVE
   end
 
   # build message and send to slack channel
