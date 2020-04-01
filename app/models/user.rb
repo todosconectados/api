@@ -5,7 +5,7 @@ class User < ApplicationRecord
   include Slackable
   include Snsable
 
-  has_one :dialer, dependent: :destroy
+  has_one :dialer, dependent: :nullify
 
   validates :name, :phone, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
