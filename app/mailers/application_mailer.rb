@@ -32,13 +32,16 @@ class ApplicationMailer < ActionMailer::Base
 
   private
 
+  # adds links to the emails that use them
+  # @return nil
+  # @private
   def set_links!
     @landing_url = ENV['LANDING_URL']
     @privacy_url = "#{@landing_url}/politica-de-privacidad"
     @terms_url = "#{@landing_url}/terminos-y-condiciones"
   end
 
-  # adds social media icons to the emails that use them
+  # adds icons to the emails that use them
   # @return nil
   # @private
   def attach_images!
