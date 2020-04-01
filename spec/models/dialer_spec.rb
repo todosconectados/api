@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Dialer, type: :model do
   # validations
   describe 'validations' do

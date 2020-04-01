@@ -49,6 +49,7 @@ module TodosConectados
                                .config
                                .filter_parameters
                                .map(&:to_s)
+      config.silence_ready = Rails.env.test? || Rails.env.development?
     end
     # i18n config
     config.i18n.default_locale = :es

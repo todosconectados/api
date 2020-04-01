@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Lead, type: :model do
   describe 'validations' do
     let!(:user) { create :user }
@@ -8,7 +10,7 @@ describe Lead, type: :model do
     it { should validate_length_of(:phone).is_equal_to 10 }
 
     it 'should return error on invalid email' do
-      user.email = "email"
+      user.email = 'email'
       expect(user).to_not be_valid
       expect(user.errors.messages[:email]).to eq ['es invalido']
     end
@@ -21,7 +23,7 @@ describe Lead, type: :model do
 
     it 'should send email to Lead User' do
       VCR.use_cassette('leads_creation_sended_email',
-        match_requests_on: [:ses_api]) do
+                       match_requests_on: [:ses_api]) do
         lead.send_leads_contact_email!
       end
     end

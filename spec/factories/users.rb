@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   sequence :unique_email do |n|
     "user_specs#{n}_#{Faker::Internet.safe_email}"

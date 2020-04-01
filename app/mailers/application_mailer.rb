@@ -15,6 +15,7 @@ class ApplicationMailer < ActionMailer::Base
   # @return nil
   def email_conference_code(user)
     @user = user
+    @dialer = user.dialer
     mail(
       to: user.email,
       subject: 'TodoConectados | Código de conferencia'
@@ -33,6 +34,8 @@ class ApplicationMailer < ActionMailer::Base
 
   def set_links!
     @landing_url = ENV['LANDING_URL']
+    @privacy_url = "#{@landing_url}/politica-de-privacidad"
+    @terms_url = "#{@landing_url}/terminos-y-condiciones"
   end
 
   # adds social media icons to the emails that use them

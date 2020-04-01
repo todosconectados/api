@@ -1,26 +1,43 @@
 <tr>
-  <td class="content-element second" style="padding: 20px; padding-top: 0;">
+  <td class="content-element second" style="padding: 20px; padding-top: 0; padding-bottom: 0;">
     <h2 class="centered-subtitle" style="color: #666666; font-size: 17px; text-align: center;">
       ¡Tu numéro telefónico esta listo!
     </h2>
   </td>
 </tr>
 <tr>
-   <td class="beta-content" style="padding: 20px 15px;">
-     <p class="title-support-code text-muted" style="color: #7d7d7d; font-size: 12px; font-weight: 300; line-height: 1.3em; padding-top: 20px;">
-       <span class="bold" style="color: #707070; font-weight: 550;">
-         <%= @user.name %>
-       </span>
-     </p>
-     <p style="color: #7d7d7d; font-size: 12px; line-height: 1.3em;">
-       <br>Tu telefono es:
-       <span class="bold" style="color: #707070; font-weight: 550;">
-         <%= @user.phone %>
-       </span>
-       <br>Tu codigo de conferencia asignado es:
-       <span class="bold" style="color: #707070; font-weight: 550;">
-         <%= @user.dialer.conference_code %>
-       </span>
-     </p>
-   </td>
+  <td class="content-element" style="padding: 20px; padding-top: 0;">
+    <p style="font-size: 12px; line-height: 1.3em;">
+      !Tu sala de conferencias ha sido activada.
+      Utilízala para tener conferencias con hasta
+      <strong style="color: #434343; font-weight: 600;">5 compañer@s</strong>!
+    </p>
+    <p style="font-size: 12px; line-height: 1.3em;">
+      Tu número telefónico es:
+    </p>
+    <p style="color: #FF5155; font-size: 20px; font-weight: 600; line-height: 1.3em; text-align: center;">
+      <span style="color: #FF5155; font-size: 1.8em; font-weight: 600;">
+        <%= @dialer.did %>
+      </span>
+    </p>
+    <p style="font-size: 12px; line-height: 1.3em;">
+      Tu código de acceso es:
+    </p>
+    <p style="color: #FF5155; font-size: 20px; font-weight: 600; line-height: 1.3em; text-align: center;">
+      <span style="color: #FF5155; font-size: 1.8em; font-weight: 600;">
+        <%= @dialer.conference_code %>
+      </span>
+    </p>
+    <p style="font-size: 12px; line-height: 1.3em;">
+      Esta sala estará disponible durante el periodo de contingencia de Covid-19.
+      Consulta
+      <a href="<%= @terms_url %>" style="color: #FF5155;">
+        Términos y Condiciones
+      </a>
+      y nuestro
+      <a href="<%= @privacy_url %>" style="color: #FF5155;">
+        Aviso de Privicidad
+      </a>.
+    </p>
+  </td>
 </tr>
