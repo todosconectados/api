@@ -69,7 +69,11 @@ class User < ApplicationRecord
              else
                dialers.first!
              end
+<<<<<<< HEAD
     update!(status: User::Status::ACTIVE, dialer: dialer)
+=======
+    update! status: User::Status::ACTIVE, dialer: dialer
+>>>>>>> 3367b948a8d97952e27f40a1a3c84a4118381136
     dialer.update! status: Dialer::Status::ACTIVE
   end
 

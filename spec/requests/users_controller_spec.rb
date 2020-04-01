@@ -125,6 +125,8 @@ describe UsersController do
       expect(dialer_data['conference_code']).to eq(dialer.conference_code)
       user.reload
       expect(user).to be_active
+      dialer.reload
+      expect(dialer).to be_active
     end
 
     it 'should return Record not found if phone not found' do
