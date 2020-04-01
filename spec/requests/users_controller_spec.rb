@@ -109,7 +109,8 @@ describe UsersController do
 
   describe 'POST /users/:id/activate' do
     let!(:user) do
-      create :user, phone: '5522522113', activation_code: '1234'
+      create :user, :intermediate,
+        phone: '5522522113', activation_code: '1234'
     end
 
     let!(:dialer) { create :dialer }
