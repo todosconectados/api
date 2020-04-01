@@ -29,7 +29,7 @@ describe LeadsController do
     end
 
     it 'should create a lead user' do
-      VCR.use_cassette('leads_creation_sended_email',
+      VCR.use_cassette('leads_creation_email',
                        match_requests_on: [:ses_api]) do
         post url, params: params
       end

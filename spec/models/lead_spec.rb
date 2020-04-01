@@ -17,12 +17,10 @@ describe Lead, type: :model do
   end
 
   describe '#send_leads_contact_email!' do
-    let!(:lead) do
-      create :lead
-    end
+    let!(:lead) { create :lead }
 
     it 'should send email to Lead User' do
-      VCR.use_cassette('leads_creation_sended_email',
+      VCR.use_cassette('leads_creation_email',
                        match_requests_on: [:ses_api]) do
         lead.send_leads_contact_email!
       end

@@ -20,7 +20,9 @@ describe User, type: :model do
 
   describe '#send_conference_code!' do
     let(:dialer) { create :dialer }
-    let!(:user) { create :user, dialer: dialer, email: 'joel@thegurucompany.com' }
+    let!(:user) do
+      create :user, dialer: dialer, email: 'joel@thegurucompany.com'
+    end
 
     it 'should send email to user' do
       VCR.use_cassette('user_send_sms_with_code',
