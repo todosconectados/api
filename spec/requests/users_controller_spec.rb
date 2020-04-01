@@ -7,8 +7,7 @@ describe UsersController do
           user: {
             name: 'Emmanuel Amaury',
             last_names: 'Fuentes Venegas',
-            email: 'fuentesamaury@hotmail.com',
-            phone: '4421304777'
+            email: 'fuentesamaury@hotmail.com'
           },
           'g-recaptcha-response': '03AOLTBLT-RqJFh8sI7K6xUWHZaXYXq2UwaWPTyjlyl4MWNFwjq3l96uBzjfcObpeDYVPlzbLMPzDLSCE3snzhcU_tRLNCkLmGtR7yzjR4tKsTzCxPEsq7yQ1UHXhcVkyOAe0lpdJ43YOsqDKa74umr0g5v0vBU3JlnjewZExSytKORQjUTL6GjVYGHhIn_htaXAksZqcNeIo52-CMHEC-yjskqD03mBX6FcPi0yOrEq2F4Kx07raaS1FcWfLeA4RQtL7-HTgk14YsCUU4VvaYP0pWn-N4EoZIl0qMub7gyOKydXA55PR_h12arG08HCBKBY_JxSIURye2_Mep8TOaXzXjt2w147qqOq8W_eXe1RCBVqvrbeDVupT4vBuTFIebRsGAieqNY8tVtKBE2PDekHBVbDmxw1MLLv925SqScZuZCEcaWe4QscXoQ-jdpV48Ckm9E-kyIcioTAB1szvysUGd_6iMF4oUN_O2EpU-M1cfY4sWS01tf3BE5EMxltrrByM75S6HmZo5sxSNZOyQWOBZWkU-c8im_Q'
         }
@@ -19,8 +18,7 @@ describe UsersController do
         use: {
           name: 'Emmanuel Amaury',
           last_names: 'Fuentes Venegas',
-          email: 'fuentesamaury@hotmail.com',
-          phone: '4421304777'
+          email: 'fuentesamaury@hotmail.com'
         },
         'g-recaptcha-response': '03AOLTBLT-RqJFh8sI7K6xUWHZaXYXq2UwaWPTyjlyl4MWNFwjq3l96uBzjfcObpeDYVPlzbLMPzDLSCE3snzhcU_tRLNCkLmGtR7yzjR4tKsTzCxPEsq7yQ1UHXhcVkyOAe0lpdJ43YOsqDKa74umr0g5v0vBU3JlnjewZExSytKORQjUTL6GjVYGHhIn_htaXAksZqcNeIo52-CMHEC-yjskqD03mBX6FcPi0yOrEq2F4Kx07raaS1FcWfLeA4RQtL7-HTgk14YsCUU4VvaYP0pWn-N4EoZIl0qMub7gyOKydXA55PR_h12arG08HCBKBY_JxSIURye2_Mep8TOaXzXjt2w147qqOq8W_eXe1RCBVqvrbeDVupT4vBuTFIebRsGAieqNY8tVtKBE2PDekHBVbDmxw1MLLv925SqScZuZCEcaWe4QscXoQ-jdpV48Ckm9E-kyIcioTAB1szvysUGd_6iMF4oUN_O2EpU-M1cfY4sWS01tf3BE5EMxltrrByM75S6HmZo5sxSNZOyQWOBZWkU-c8im_Q'
       }
@@ -31,8 +29,7 @@ describe UsersController do
         user: {
           name: 'Emmanuel Amaury',
           last_names: 'Fuentes Venegas',
-          email: 'fuentesamaury@hotmail.com',
-          phone: '4421304777'
+          email: 'fuentesamaury@hotmail.com'
         },
         'g-recaptcha-response': '03AOLTBLT-RqJFh8sI7K6xUWHZaXYXq2UwaWPTyjlyl4MWNFwjq3l96uBzjfcObpeDYVPlzbLMPzDLSCE3snzhcU_tRLNCkLmGtR7yzjR4tKsTzCxPEsq7yQ1UHXhcVkyOAe0lpdJ43YOsqDKa74umr0g5v0vBU3JlnjewZExSytKORQjUTL6GjVYGHhIn_htaXAksZqcNeIo52-CMHEC-yjskqD03mBX6FcPi0yOrEq2F4Kx07raaS1FcWfLeA4RQtL7-HTgk14YsCUU4VvaYP0pWn-N4EoZIl0qMub7gyOKydXA55PR_h12arG08HCBKBY_JxSIURye2_Mep8TOaXzXjt2w147qqOq8W_eXe1RCBVqvrbeDVupT4vBuTFIebRsGAieqNY8tVtKBE2PDekHBVbDmxw1MLLv925SqScZuZCEcaWe4QscXoQ-jdpV48Ckm9E-kyIcioTAB1szvysUGd_6iMF4oUN_O2EpU-M1cfY4sWS01tf3BE5EMxltrrByM75S6HmZo5sxSNZOyQWOBZWkU-c8im_Q'
       }
@@ -51,7 +48,7 @@ describe UsersController do
       expect(user_data['name']).to eq(expected_data[:name])
       expect(user_data['last_names']).to eq(expected_data[:last_names])
       expect(user_data['email']).to eq(expected_data[:email])
-      expect(user_data['phone']).to eq(expected_data[:phone])
+      expect(user_data['phone']).to be_nil
       expect(user_data['activation_code']).
         to eq(expected_data[:activation_code])
     end
@@ -75,7 +72,6 @@ describe UsersController do
   describe 'POST /users/:id/validate' do
     let!(:user) do
       create :user,
-      phone: '5522522113',
       email: 'fuentesamaury@hotmail.com'
     end
 
@@ -91,11 +87,7 @@ describe UsersController do
       expect(response).to have_http_status(:ok)
       user.reload
       expect(user.activation_code).to be_present
-    end
-
-    it 'should return Record unprocessable_entity if phone not found' do
-      post url, params: { phone: nil }
-      expect(response).to have_http_status(:unprocessable_entity)
+      expect(user.phone).to eq('4421304777')
     end
 
     it 'should return Record not found if status is different from step 1' do

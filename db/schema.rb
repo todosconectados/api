@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2020_03_27_230454) do
     t.string "name", null: false
     t.string "last_names", null: false
     t.string "email", null: false
-    t.string "phone", null: false
+    t.string "phone"
     t.integer "status", default: 0
     t.string "activation_code"
     t.datetime "created_at", precision: 6, null: false

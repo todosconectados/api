@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   has_one :dialer, dependent: :destroy
 
-  validates :name, :phone, presence: true
+  validates :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :email, uniqueness: true
-  validates :phone, length: { is: 10 }
+  validates :phone, length: { is: 10 }, if: :phone?
 
   module Status
     STEP1 = :step1
@@ -75,10 +75,10 @@ class User < ApplicationRecord
   # build message and send to slack channel
   # @return nil
   def notify_slack!
-    post_to_slack(
-      ENV['USER_SIGNUP_CHANNEL'],
-      to_slack_notification!
-    )
+    # post_to_slack(
+    #   ENV['USER_SIGNUP_CHANNEL'],
+    #   to_slack_notification!
+    # )
   end
 
   # name and last_name
@@ -106,5 +106,11 @@ class User < ApplicationRecord
       text: 'Nuevo registro de usuario',
       attachments: [{ color: color, fields: fields }]
     }
+  end
+
+  # Check if the current user has assigned a Phone
+  # @return Boolean - true or false
+  def phone?
+    phone.present?
   end
 end
