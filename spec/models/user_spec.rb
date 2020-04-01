@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe User, type: :model do
   # validations
   describe 'validations' do
@@ -10,25 +12,24 @@ describe User, type: :model do
     it { should validate_uniqueness_of(:email) }
 
     it 'should return error on invalid email' do
-      user.email = "email"
+      user.email = 'email'
       expect(user).to_not be_valid
       expect(user.errors.messages[:email]).to eq ['es invalido']
     end
   end
 
   describe '#send_conference_code!' do
-    let!(:dialer) { create :dialer }
+    let(:dialer) { create :dialer }
     let!(:user) do
-      create :user,
-      dialer: dialer
+      create :user, dialer: dialer, email: 'joel@thegurucompany.com'
     end
 
     it 'should send email to user' do
-      VCR.use_cassette('user_sended_email',
-        match_requests_on: [:ses_api]) do
-        VCR.use_cassette('user_send_sms_with_code',
-          match_requests_on: [:marcatel_api]) do
-            user.send_conference_code!
+      VCR.use_cassette('user_send_sms_with_code',
+                       match_requests_on: [:marcatel_api]) do
+        VCR.use_cassette('user_send_conference_code_email',
+                         match_requests_on: [:ses_api]) do
+          user.send_conference_code!
         end
       end
     end

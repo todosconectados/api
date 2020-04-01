@@ -54,7 +54,7 @@ class User < ApplicationRecord
     send_sms!(
       self[:phone],
       I18n.t('activerecord.attributes.concern.sns_snsable.conference_code',
-             phone: phone, conference_code: dialer.conference_code)
+             did: dialer.did, conference_code: dialer.conference_code)
     )
     ApplicationMailer.email_conference_code(self).deliver_later
   end
