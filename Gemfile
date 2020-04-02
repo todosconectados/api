@@ -30,6 +30,8 @@ gem 'sentry-raven', '~> 3.0.0'
 # gem 'capistrano-rails', group: :development
 # use `aws-ses` for Transactional Email Deliveries
 gem 'aws-ses', '~> 0.6.0', require: 'aws/ses'
+# use sidekiq-cron for cron jobs
+gem 'sidekiq-cron', '~> 1.0.4'
 # WDSL client
 gem 'savon', '~> 2.12.0'
 # Use `random_password_generator` for Password management

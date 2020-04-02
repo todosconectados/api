@@ -25,6 +25,11 @@ class User < ApplicationRecord
     }.freeze
   end
 
+  module NotificationType
+    NO_USAGE_WARNING = (1 << 0)
+    NO_USAGE_TERMINATION = (2 << 0)
+  end
+
   enum status: Status::LIST
 
   # creates a 4 length random code based on the given generation properties

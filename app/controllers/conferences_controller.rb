@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
+# Conference API endpoint
 class ConferencesController < ApplicationController
+  before_action :assert_dialer!, only: %i[create]
   # Generates a new +conference+ for the given params.
   # @param [Integer] conference[pbx_id] - Conference Pbx ID
   # @param [Datetime] conference[started_at] - Conference started_at
@@ -16,8 +20,27 @@ class ConferencesController < ApplicationController
   #   }
   # }
   def create
-    user = User.create! create_params
-    user.notify_slack!
-    json_response user, :created
+    conference = Conference.create! create_params.merge(dialer: @dialer)
+    json_response conference, :created
+  end
+
+  private
+
+  # returns a List of permitted HTTP Params for +Conference+ resource.
+  # @return ActionController::Parameters
+  # @private
+  def create_params
+    params.require(:conference).permit(
+      :started_at,
+      :ended_at,
+      :pbx_id
+    )
+  end
+
+  # returns the Dialer finded by the given did parameter
+  # @raise ActiveRecord::RecordNotFound
+  # @return User
+  def assert_dialer!
+    @dialer = Dialer.active.find_by did: params[:did]
   end
 end

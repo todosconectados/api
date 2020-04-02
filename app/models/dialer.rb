@@ -3,7 +3,7 @@
 # Dialers Class
 class Dialer < ApplicationRecord
   belongs_to :user, optional: true
-
+  has_many :conferences, dependent: :destroy
   # enum modules
   module Status
     RESERVED = :reserved

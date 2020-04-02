@@ -7,4 +7,9 @@ FactoryBot.define do
     conference_code { Faker::Number.number(4) }
     assigned_at { Time.current }
   end
+
+  trait :active do
+    status { Dialer::Status::ACTIVE }
+    user
+  end
 end
