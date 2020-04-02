@@ -11,7 +11,6 @@ describe ConferencesController do
     let!(:params) do
         {
           conference: {
-            started_at: Time.current,
             ended_at: Time.current.advance(minutes: 5),
             pbx_id: '5'
           },
@@ -22,7 +21,6 @@ describe ConferencesController do
     let!(:invalid_params) do
       {
         conference: {
-          started_at: Time.current,
           ended_at: Time.current.advance(minutes: 5),
           pbx_id: '5'
         },
@@ -34,9 +32,7 @@ describe ConferencesController do
       expect(response).to have_http_status(:created)
       conference_data = json['conference']
       expected_data = params[:conference]
-      expect(conference_data['started_at']).to be_present
       expect(conference_data['ended_at']).to be_present
-      expect(conference_data['ended_at'].to_time - conference_data['started_at'].to_time).to be_present
       expect(conference_data['pbx_id'].to_s).to eq(expected_data[:pbx_id])
       expect(conference_data['dialer_id']).to eq(dialer.id)
     end
