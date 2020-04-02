@@ -12,9 +12,14 @@ FactoryBot.define do
     phone { Faker::Number.number(10) }
     status { User::Status::STEP1 }
     activation_code { Faker::Number.number(4) }
+    notifications_sent { false }
 
     trait :intermediate do
       status { User::Status::INTERMEDIATE }
+    end
+
+    trait :dialer do
+      dialer
     end
   end
 end

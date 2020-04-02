@@ -7,10 +7,10 @@ class User < ApplicationRecord
 
   has_one :dialer, dependent: :nullify
 
-  validates :name, :phone, presence: true
+  validates :name, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :email, uniqueness: true
-  validates :phone, length: { is: 10 }
+  validates :phone, length: { is: 10 }, if: :phone?
 
   module Status
     STEP1 = :step1
@@ -23,6 +23,11 @@ class User < ApplicationRecord
       ACTIVE => 2,
       TERMINATED => 3
     }.freeze
+  end
+
+  module NotificationType
+    NO_USAGE_WARNING = (1 << 0)
+    NO_USAGE_TERMINATION = (2 << 0)
   end
 
   enum status: Status::LIST
@@ -69,7 +74,7 @@ class User < ApplicationRecord
              else
                dialers.first!
              end
-    update! status: User::Status::ACTIVE, dialer: dialer
+    update!(status: User::Status::ACTIVE, dialer: dialer)
     dialer.update! status: Dialer::Status::ACTIVE
   end
 
@@ -107,5 +112,11 @@ class User < ApplicationRecord
       text: 'Nuevo registro de usuario',
       attachments: [{ color: color, fields: fields }]
     }
+  end
+
+  # Check if the current user has assigned a Phone
+  # @return Boolean - true or false
+  def phone?
+    phone.present?
   end
 end

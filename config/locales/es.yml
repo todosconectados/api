@@ -19,6 +19,7 @@ es:
               wrong_length: 'La longitud del teléfono no es la adecuada (10)'
             email:
               invalid: 'es invalido'
+              taken: ya está en uso
   notifications:
     activation_message:
       message: 'Tu código de verificación es: %{activation_code}.'

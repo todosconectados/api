@@ -30,6 +30,22 @@ class ApplicationMailer < ActionMailer::Base
     )
   end
 
+  def cancelation_conference_room_email(user)
+    @user = user
+    mail(
+      to: user.email,
+      subject: 'TodoConectados | Aviso de cancelación de cuenta'
+    )
+  end
+
+  def preventive_review_email(user)
+    @user = user
+    mail(
+      to: user.email,
+      subject: 'TodoConectados | Aviso de cuenta no utilizada'
+    )
+  end
+
   private
 
   # adds links to the emails that use them

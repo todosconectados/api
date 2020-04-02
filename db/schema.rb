@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_27_230454) do
+ActiveRecord::Schema.define(version: 2020_04_01_194740) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "conferences", force: :cascade do |t|
+    t.integer "pbx_id"
+    t.datetime "ended_at"
+    t.datetime "started_at"
+    t.bigint "dialer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dialer_id"], name: "index_conferences_on_dialer_id"
+  end
 
   create_table "dialers", force: :cascade do |t|
     t.integer "status", default: 0
@@ -40,12 +50,14 @@ ActiveRecord::Schema.define(version: 2020_03_27_230454) do
     t.string "name", null: false
     t.string "last_names", null: false
     t.string "email", null: false
-    t.string "phone", null: false
+    t.string "phone"
     t.integer "status", default: 0
     t.string "activation_code"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "notifications_sent", default: 0
   end
 
+  add_foreign_key "conferences", "dialers"
   add_foreign_key "dialers", "users"
 end

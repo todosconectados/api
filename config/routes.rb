@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   end
 
   resources :leads, only: %i[create]
+
+  resources :conferences, only: %i[create]
 end

@@ -1,0 +1,7 @@
+preventive_review_job:
+ cron: "0 1 * * * * "
+ class: "PreventiveReviewJob"
+
+conference_room_cancelation_job:
+ cron: "0 1 * * * * "
+ class: "ConferenceRoomCancelationJob"
