@@ -122,7 +122,6 @@ class User < ApplicationRecord
     result
   end
 
-
   private
 
   # build slack message

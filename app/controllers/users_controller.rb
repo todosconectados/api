@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   include ApiKeyAuthenticable
   before_action :validate_recaptcha!, only: %i[create]
   before_action :assert_user!, only: %i[validate]
+  before_action :assert_user_show!, only: %i[show]
   before_action :assert_user_with_activation_code!, only: %i[activate]
   # before_action :authenticate_knox_api_key!, only:  %i[index]
 
@@ -59,6 +60,37 @@ class UsersController < ApplicationController
     head :ok
   end
 
+  # Fetches a given +User+ element for a given +identifier+ parameter
+  # @param [bigint] identifier
+  # @param datetime start_date
+  # @param datetime end_date
+  # @return [JSON] JSON serialization of found record
+  # @example
+  # {
+  #  "user": [
+  #      {
+  #          "id": 1,
+  #          "name": "Teresa Fernández Alvarez",
+  #          "last_names": "Márquez",
+  #          "email": "user_specs1_chauncey@example.org",
+  #          "phone": "8449473236",
+  #          "status": "step1",
+  #          "activation_code": "5819",
+  #          "created_at": "2020-04-08T16:10:01.596-06:00",
+  #          "updated_at": "2020-04-08T16:10:01.596-06:00",
+  #      },
+  #      {
+  #          "id": 2,
+  #          "name": "María Duarte Ulibarri",
+  #          "last_names": "Lebrón",
+  #          "email": "user_specs2_vanda_gleason@example.com",
+  #          "phone": "5346897745",
+  #          "status": "step1",
+  #          "activation_code": "8858",
+  #          "created_at": "2020-04-08T16:10:01.596-06:00",
+  #          "updated_at": "2020-04-08T16:10:01.596-06:00",
+  #      }
+  #  ]
   def index
     collection = User.filter_by_date(params[:start_date], params[:end_date])
     search_fields = [
@@ -76,6 +108,28 @@ class UsersController < ApplicationController
       search_fields: search_fields
     }
     render_json_api_list_resource list_resource
+  end
+
+  # Fetches a given +User+ element for a given +id+ parameter
+  # @param [int] id
+  # @return [JSON] JSON serialization of found record
+  # @example
+  # {
+  #  "user": [
+  #      {
+  #          "id": 1,
+  #          "name": "Teresa Fernández Alvarez",
+  #          "last_names": "Márquez",
+  #          "email": "user_specs1_chauncey@example.org",
+  #          "phone": "8449473236",
+  #          "status": "step1",
+  #          "activation_code": "5819",
+  #          "created_at": "2020-04-08T17:19:01.596-06:00",
+  #          "updated_at": "2020-04-08T17:14:01.596-06:00",
+  #      }
+  #  ]
+  def show
+    json_response @user
   end
 
   private
@@ -108,5 +162,13 @@ class UsersController < ApplicationController
       id: params[:id],
       activation_code: params[:activation_code]
     )
+  end
+
+  # returns the current user finded by the given id
+  # id param
+  # @raise ActiveRecord::RecordNotFound
+  # @return User
+  def assert_user_show!
+    @user = User.find params[:id]
   end
 end

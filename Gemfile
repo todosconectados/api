@@ -25,6 +25,8 @@ gem 'dotenv-rails', '~> 2.7.2'
 # gem 'bcrypt', '~> 3.1.7'
 # slack
 gem 'slack-ruby-client', '~> 0.13.1'
+# use `kaminari` for ActiveRecord::Relation paging
+gem 'kaminari', '~> 1.0.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # use `sentry-raven` for Error Reporting
