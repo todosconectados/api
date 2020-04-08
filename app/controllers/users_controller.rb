@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   before_action :assert_user!, only: %i[validate]
   before_action :assert_user_show!, only: %i[show]
   before_action :assert_user_with_activation_code!, only: %i[activate]
-  before_action :authenticate_knox_api_key!, only: %i[index]
+  before_action :authenticate_api_key!, only: %i[index show]
 
   # Generates a new +User+ for the given params.
   # @param [String] user[name] - User Name
