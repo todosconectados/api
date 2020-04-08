@@ -3,7 +3,7 @@
 # +ApiKeyAuthenticable+ module
 module ApiKeyAuthenticable
   extend ActiveSupport::Concern
-  # include Knock::Authenticable
+  include Knock::Authenticable
 
   protected
 
