@@ -4,6 +4,7 @@
 class ApplicationController < ActionController::API
   include Recaptcha::Verify
   include Errorable
+  include ApiListable
   before_action :set_raven_context
 
   protected

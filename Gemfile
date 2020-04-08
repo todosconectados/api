@@ -15,6 +15,9 @@ gem 'puma', '~> 4.1'
 # use `active_model_serializers` for JSON serialization
 gem 'active_model_serializers', '~> 0.10.6'
 # use `dotenv-rails` for ENV variable management
+# gem knock for auth
+gem 'knock'
+
 gem 'dotenv-rails', '~> 2.7.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

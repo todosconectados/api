@@ -1,6 +1,23 @@
 # frozen_string_literal: true
 
 describe UsersController do
+  context 'with auth' do
+    describe 'GET /users' do
+      let!(:user) do
+        create_list(:user, 5)
+      end
+
+      it 'list a full collection of event' do
+        get users_url
+        # status code expectations
+        expect(response).to have_http_status(200)
+        binding.pry
+        users_json = json['users']
+        expect(users_json.count).to eq(5)
+      end
+    end
+  end
+
   describe 'POST /users' do
     let!(:url) { users_url }
 

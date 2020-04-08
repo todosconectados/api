@@ -2,9 +2,12 @@
 
 # User API endpoint
 class UsersController < ApplicationController
+  include ApiKeyAuthenticable
   before_action :validate_recaptcha!, only: %i[create]
   before_action :assert_user!, only: %i[validate]
   before_action :assert_user_with_activation_code!, only: %i[activate]
+  # before_action :authenticate_knox_api_key!, only:  %i[index]
+
   # Generates a new +User+ for the given params.
   # @param [String] user[name] - User Name
   # @param [String] user[last_names] - User Last name
@@ -54,6 +57,25 @@ class UsersController < ApplicationController
     @user.generate_activation_code!
     @user.send_activation_code!
     head :ok
+  end
+
+  def index
+    collection = User.filter_by_date(params[:start_date], params[:end_date])
+    search_fields = [
+      { table: 'users', field: 'name' },
+      { table: 'users', field: 'last_names' },
+      { table: 'users', field: 'email' },
+      { table: 'users', field: 'phone' }
+    ]
+    filtering_params = params.slice(
+      :status
+    )
+    list_resource = {
+      collection: collection,
+      filtering_params: filtering_params,
+      search_fields: search_fields
+    }
+    render_json_api_list_resource list_resource
   end
 
   private
