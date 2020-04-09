@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 describe UsersController do
-  
+
   let!(:api_key) do
     create(:api_key)
   end
@@ -45,6 +45,32 @@ describe UsersController do
         expect(user_json['name']).to be_present
         expect(user_json['last_names']).to be_present
         expect(user_json['email']).to be_present
+      end
+    end
+  end
+
+  context 'without auth' do
+    describe 'GET /users' do
+      let!(:user) do
+        create_list(:user, 5)
+      end
+
+      it 'shoul not return a list a full collection of users' do
+        get users_url
+        # status code expectations
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    describe 'GET /users/:id' do
+      let!(:user) do
+        create(:user)
+      end
+
+      it 'should not return user' do
+        get user_url(user.id)
+        # status code expectations
+        expect(response).to have_http_status(:unauthorized)
       end
     end
   end
