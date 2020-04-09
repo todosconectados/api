@@ -15,6 +15,9 @@ gem 'puma', '~> 4.1'
 # use `active_model_serializers` for JSON serialization
 gem 'active_model_serializers', '~> 0.10.6'
 # use `dotenv-rails` for ENV variable management
+# gem knock for auth
+gem 'knock', '~> 2.1.1'
+
 gem 'dotenv-rails', '~> 2.7.2'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -22,6 +25,8 @@ gem 'dotenv-rails', '~> 2.7.2'
 # gem 'bcrypt', '~> 3.1.7'
 # slack
 gem 'slack-ruby-client', '~> 0.13.1'
+# use `kaminari` for ActiveRecord::Relation paging
+gem 'kaminari', '~> 1.0.1'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 # use `sentry-raven` for Error Reporting

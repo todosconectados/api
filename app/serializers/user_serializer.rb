@@ -8,7 +8,9 @@ class UserSerializer < ApplicationSerializer
              :phone,
              :status,
              :activation_code,
-             :dialer
+             :dialer,
+             :created_at,
+             :updated_at
 
   def dialer
     return if object.dialer.nil?

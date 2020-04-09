@@ -1,6 +1,80 @@
 # frozen_string_literal: true
 
 describe UsersController do
+
+  let!(:api_key) do
+    create(:api_key)
+  end
+
+  before do
+    api_key.generate_api_id_and_api_key
+    api_key.save!
+  end
+
+  context 'with auth' do
+    describe 'GET /users' do
+      let!(:user) do
+        create_list(:user, 5)
+      end
+
+      sign_in :api_key
+
+      it 'list a full collection of users' do
+        get users_url
+        # status code expectations
+        expect(response).to have_http_status(200)
+        users_json = json['users']
+        expect(users_json.count).to eq(5)
+      end
+    end
+
+    describe 'GET /users/:id' do
+      let!(:user) do
+        create(:user)
+      end
+
+      sign_in :api_key
+
+      it 'should return user' do
+        get user_url(user.id)
+        # status code expectations
+        expect(response).to have_http_status(:ok)
+        # data expectations
+        user_json = json['user']
+        expect(user_json).to be_present
+        expect(user_json['name']).to be_present
+        expect(user_json['last_names']).to be_present
+        expect(user_json['email']).to be_present
+      end
+    end
+  end
+
+  context 'without auth' do
+    describe 'GET /users' do
+      let!(:user) do
+        create_list(:user, 5)
+      end
+
+      it 'shoul not return a list a full collection of users' do
+        get users_url
+        # status code expectations
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+
+    describe 'GET /users/:id' do
+      let!(:user) do
+        create(:user)
+      end
+
+      it 'should not return user' do
+        get user_url(user.id)
+        # status code expectations
+        expect(response).to have_http_status(:unauthorized)
+      end
+    end
+  end
+
   describe 'POST /users' do
     let!(:url) { users_url }
 

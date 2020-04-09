@@ -88,6 +88,40 @@ class User < ApplicationRecord
     "#{name} #{last_names}"
   end
 
+  # returns an ActiveRecord::Relation of +User+ instances filtered by
+  # +start_date+ and +end_date+ params on
+  # the created_at value
+  # @param [DateTime] - start_date
+  # @param [DateTime] - end_date
+  # @return ActiveRecord::Relation
+  def self.filter_by_created_at(start_date, end_date)
+    result = where(nil)
+    if start_date.present?
+      start_date = Time.zone.parse(start_date)
+      result = result.where(
+        'users.created_at >= ?', start_date.beginning_of_day
+      )
+    end
+    if end_date.present?
+      end_date = Time.zone.parse(end_date)
+      result = result.where(
+        'users.created_at <= ?', end_date.end_of_day
+      )
+    end
+    result
+  end
+
+  # returns an ActiveRecord::Relation of +User+ instances filtered by
+  # +start_date+ and +end_date+ params run through filter_by_created_at
+  # and filter_by_waiting_list_payed_at
+  # @param [DateTime] - start_date
+  # @param [DateTime] - end_date
+  # @return ActiveRecord::Relation
+  def self.filter_by_date(start_date, end_date)
+    result = filter_by_created_at(start_date, end_date)
+    result
+  end
+
   private
 
   # build slack message

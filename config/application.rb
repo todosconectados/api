@@ -35,6 +35,7 @@ module TodosConectados
     config.time_zone = 'America/Mexico_City'
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
+    config.autoloader = :classic
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.

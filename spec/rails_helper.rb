@@ -77,8 +77,8 @@ RSpec.configure do |config|
   # include SpecHelper
   config.include SpecHelper
   # Helpers
-  # config.include Requests::AuthHelpers::Includables, type: :request
-  # config.extend Requests::AuthHelpers::Extensions, type: :request
+  config.include Requests::AuthHelpers::Includables, type: :request
+  config.extend Requests::AuthHelpers::Extensions, type: :request
   # start by truncating all the tables but then use the faster transaction
   # strategy the rest of the time.
   config.before(:suite) do
