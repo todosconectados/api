@@ -6,7 +6,6 @@ describe User, type: :model do
     let!(:user) { create :user }
 
     it { should validate_presence_of :name }
-    it { should validate_presence_of :phone }
     it { should validate_length_of(:phone).is_equal_to 10 }
 
     it { should validate_uniqueness_of(:email) }
